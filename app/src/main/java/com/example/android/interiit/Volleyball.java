@@ -2,6 +2,7 @@ package com.example.android.interiit;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.PagerTabStrip;
 import androidx.viewpager.widget.ViewPager;
 
@@ -25,6 +26,7 @@ public class Volleyball extends AppCompatActivity {
         viewPager.setAdapter(adapter);
 
         TabLayout tabLayout=findViewById(R.id.sliding_tabs);
+        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         tabLayout.setupWithViewPager(viewPager);
         }
     }

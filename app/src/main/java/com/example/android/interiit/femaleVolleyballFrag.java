@@ -20,7 +20,7 @@ public class femaleVolleyballFrag extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView= inflater.inflate(R.layout.activity_male_frag, container, false);
-
+//Why male
         ArrayList<CardClass> list=new ArrayList<>() ;
         list.add(new CardClass(R.drawable.madras,"IIT Female",R.drawable.indore,"IIT Indore" ));
         list.add(new CardClass(R.drawable.madras,"IIT Masdja",R.drawable.indore,"IIT MAdr" ));
