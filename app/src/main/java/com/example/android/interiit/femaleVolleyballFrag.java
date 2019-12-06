@@ -24,17 +24,17 @@ public class femaleVolleyballFrag extends Fragment {
 
         //Female Volleyball Schedule
         ArrayList<CardClass> list=new ArrayList<>() ;
-        list.add(new CardClass(R.drawable.madras,"IIT Female VOLLEY",R.drawable.indore,"IIT Indore" ));
-        list.add(new CardClass(R.drawable.madras,"IIT Masdja",R.drawable.indore,"IIT MAdr" ));
-        list.add(new CardClass(R.drawable.madras,"IIT Mad",R.drawable.indore,"IIT M" ));
-        list.add(new CardClass(R.drawable.madras,"IIT Madras",R.drawable.indore,"IIT Indore" ));
-        list.add(new CardClass(R.drawable.madras,"IIT Madras",R.drawable.indore,"IIT Indore" ));
-        list.add(new CardClass(R.drawable.madras,"IIT Madras",R.drawable.indore,"IIT Indore" ));
-        list.add(new CardClass(R.drawable.madras,"IIT Madras",R.drawable.indore,"IIT Indore" ));
-        list.add(new CardClass(R.drawable.madras,"IIT Madras",R.drawable.indore,"IIT Indore" ));
-        list.add(new CardClass(R.drawable.madras,"IIT Madras",R.drawable.indore,"IIT Indore" ));
-        list.add(new CardClass(R.drawable.madras,"IIT Madras",R.drawable.indore,"IIT Indore" ));
-        list.add(new CardClass(R.drawable.madras,"IIT Madras",R.drawable.indore,"IIT Indore" ));
+        list.add(new CardClass(R.drawable.madras ,"IIT Female VOLLEY",R.drawable.indore,"IIT Indore" ));
+        list.add(new CardClass(R.drawable.madras ,"IIT Masdja",R.drawable.indore,"IIT MAdr" ));
+        list.add(new CardClass(R.drawable.madras ,"IIT Mad",R.drawable.indore,"IIT M" ));
+        list.add(new CardClass(R.drawable.madras ,"IIT Madras",R.drawable.indore,"IIT Indore" ));
+        list.add(new CardClass(R.drawable.madras ,"IIT Madras",R.drawable.indore,"IIT Indore" ));
+        list.add(new CardClass(R.drawable.madras ,"IIT Madras",R.drawable.indore,"IIT Indore" ));
+        list.add(new CardClass(R.drawable.madras ,"IIT Madras",R.drawable.indore,"IIT Indore" ));
+        list.add(new CardClass(R.drawable.madras ,"IIT Madras",R.drawable.indore,"IIT Indore" ));
+        list.add(new CardClass(R.drawable.madras ,"IIT Madras",R.drawable.indore,"IIT Indore" ));
+        list.add(new CardClass(R.drawable.madras ,"IIT Madras",R.drawable.indore,"IIT Indore" ));
+        list.add(new CardClass(R.drawable.madras ,"IIT Madras",R.drawable.indore,"IIT Indore" ));
 
         final int [] cursor=new int[20];
         listArrayAdapter adapter=new listArrayAdapter(getActivity(),0,list);
