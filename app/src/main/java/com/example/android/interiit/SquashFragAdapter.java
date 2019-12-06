@@ -4,24 +4,20 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
 
-public class fragAdapter extends FragmentPagerAdapter {
+public class SquashFragAdapter extends FragmentPagerAdapter {
     private String tabTitles[] = new String[] { "Male", "Female"};
-    public fragAdapter(FragmentManager fm){
+    public SquashFragAdapter(FragmentManager fm){
         super(fm,FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
     }
 
     @Override
     public Fragment getItem(int position) {
         if(position==0)
-            return new maleVolleyballFrag();
+            return new maleSquashFrag();
 
         else if(position==1)
-            return new femaleVolleyballFrag();
+            return new femaleSquashFrag();
 
         return null;
     }
@@ -36,4 +32,5 @@ public class fragAdapter extends FragmentPagerAdapter {
         return tabTitles[position];
     }
 }
+
 

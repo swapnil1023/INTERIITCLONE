@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".maleFrag"></activity>
+        <activity android:name=".TableTennis"/>
+        <activity android:name=".Squash" />
+        <activity android:name=".Badminton" />
         <activity android:name=".Volleyball" />
         <activity android:name=".MainActivity">
             <intent-filter>

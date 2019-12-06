@@ -17,16 +17,16 @@ import java.util.ArrayList;
 import static com.example.android.interiit.femaleVolleyballFrag.collapse;
 import static com.example.android.interiit.femaleVolleyballFrag.expand;
 
-public class maleVolleyballFrag extends Fragment {
+public class maleBadmintonFrag extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView= inflater.inflate(R.layout.activity_fragment_list, container, false);
 
 
-        //Male Volleyball Schedule
+        //Male Badminton Schedule
         ArrayList<CardClass> list=new ArrayList<>() ;
-        list.add(new CardClass(R.drawable.madras,"IIT MALE VOLLEY",R.drawable.indore,"IIT Indore" ));
+        list.add(new CardClass(R.drawable.madras,"IIT Madras",R.drawable.indore,"MALE BAD SCHEe" ));
         list.add(new CardClass(R.drawable.madras,"IIT Males",R.drawable.indore,"IIT MAdr" ));
         list.add(new CardClass(R.drawable.madras,"IIT Mad",R.drawable.indore,"IIT M" ));
         list.add(new CardClass(R.drawable.madras,"IIT Madras",R.drawable.indore,"IIT Indore" ));
@@ -38,7 +38,7 @@ public class maleVolleyballFrag extends Fragment {
         list.add(new CardClass(R.drawable.madras,"IIT Madras",R.drawable.indore,"IIT Indore" ));
         list.add(new CardClass(R.drawable.madras,"IIT Madras",R.drawable.indore,"IIT Indore" ));
 
-        final int [] cursor=new int[40];
+        final int [] cursor=new int[list.size()];
         listArrayAdapter adapter = new listArrayAdapter(getContext(),0,list);
         ListView listView = rootView.findViewById(R.id.Schedule);
         listView.setAdapter(adapter);

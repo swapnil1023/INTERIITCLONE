@@ -14,17 +14,39 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final CardView Volleyball=findViewById(R.id.Volleyball);
-        CardView Badminton=findViewById(R.id.Badminton);
+        final CardView Badminton=findViewById(R.id.Badminton);
+        final CardView Squash=findViewById(R.id.Squash);
+        final CardView TableTennis=findViewById(R.id.TableTennis);
 
         Volleyball.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this,Volleyball.class);
                 startActivity(intent);
-                sport=1;
+            }
+        });
+
+        Badminton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,Badminton.class);
+                startActivity(intent);
+            }
+        });
+        Squash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,Squash.class);
+                startActivity(intent);
+            }
+        });
+        TableTennis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,TableTennis.class);
+                startActivity(intent);
             }
         });
 
     }
-    public int sport;
 }

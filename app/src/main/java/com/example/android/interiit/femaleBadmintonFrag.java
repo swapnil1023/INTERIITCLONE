@@ -17,16 +17,16 @@ import java.util.ArrayList;
 import static com.example.android.interiit.femaleVolleyballFrag.collapse;
 import static com.example.android.interiit.femaleVolleyballFrag.expand;
 
-public class maleVolleyballFrag extends Fragment {
+public class femaleBadmintonFrag extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView= inflater.inflate(R.layout.activity_fragment_list, container, false);
 
 
-        //Male Volleyball Schedule
+        //Female Badminton Schedule
         ArrayList<CardClass> list=new ArrayList<>() ;
-        list.add(new CardClass(R.drawable.madras,"IIT MALE VOLLEY",R.drawable.indore,"IIT Indore" ));
+        list.add(new CardClass(R.drawable.madras,"FEMALE BAD",R.drawable.indore,"IIT Indore" ));
         list.add(new CardClass(R.drawable.madras,"IIT Males",R.drawable.indore,"IIT MAdr" ));
         list.add(new CardClass(R.drawable.madras,"IIT Mad",R.drawable.indore,"IIT M" ));
         list.add(new CardClass(R.drawable.madras,"IIT Madras",R.drawable.indore,"IIT Indore" ));
