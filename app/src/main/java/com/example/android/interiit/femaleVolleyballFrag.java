@@ -85,7 +85,9 @@ public class femaleVolleyballFrag extends Fragment {
                 {
                     if(match.getType() == DocumentChange.Type.ADDED)
                     {
-                        list.add(new CardClass(Integer.valueOf(logoM.get(match.getDocument().get("team1"))),match.getDocument().get("team1").toString(),R.drawable.indore,match.getDocument().get("team2").toString() ));
+                        int uri1 = (int) logoM.get(match.getDocument().get("team1"));
+                        int uri2 = (int) logoM.get(match.getDocument().get("team2"));
+                        list.add(new CardClass(uri1,match.getDocument().get("team1").toString(),uri2,match.getDocument().get("team2").toString() ));
                     }
                     adapter=new listArrayAdapter(getActivity(),0,list);
                     lv.setAdapter(adapter);
