@@ -24,6 +24,16 @@ public class logoMap {
         logo.put("BHU",R.drawable.bhu);
         logo.put("gandhinagar",R.drawable.gandhinagar);
         logo.put("guwahati",R.drawable.guwahati);
+        logo.put("bhubaneswar",R.drawable.bhubaneswar);
+        logo.put("hyderabad",R.drawable.hyderabad);
+        logo.put("jodhpur",R.drawable.jodhpur);
+        logo.put("patna",R.drawable.patna);
+        logo.put("mandi",R.drawable.mandi);
+        logo.put("palakkad",R.drawable.palakkad);
+        logo.put("goa",R.drawable.goa);
+        logo.put("jammu",R.drawable.jammu);
+        logo.put("dharwad",R.drawable.dharwad);
+
 
     }
 
