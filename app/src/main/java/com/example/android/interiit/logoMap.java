@@ -24,7 +24,11 @@ public class logoMap {
         logo.put("BHU",R.drawable.bhu);
         logo.put("gandhinagar",R.drawable.gandhinagar);
         logo.put("guwahati",R.drawable.guwahati);
+    }
 
+    public Map getMap()
+    {
+        return logo;
     }
 
 }

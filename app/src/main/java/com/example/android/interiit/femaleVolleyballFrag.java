@@ -30,10 +30,14 @@ public class femaleVolleyballFrag extends Fragment {
 
     ListView lv;
     listArrayAdapter adapter;
+    logoMap logo;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView= inflater.inflate(R.layout.activity_fragment_list, container, false);
+
+        logo = new logoMap();
+        final Map logoM = logo.getMap();
 
         //Female Volleyball Schedule
         lv=rootView.findViewById(R.id.Schedule);
@@ -52,9 +56,9 @@ public class femaleVolleyballFrag extends Fragment {
         list.add(new CardClass(R.drawable.madras ,"IIT Madras",R.drawable.indore,"IIT Indore" ));
         list.add(new CardClass(R.drawable.madras ,"IIT Madras",R.drawable.indore,"IIT Indore" ));*/
 
-       /* Map empMap= new HashMap<>();
-        empMap.put("team1","");
-        empMap.put("team2","");
+        Map empMap= new HashMap<>();
+        empMap.put("team1","madras");
+        empMap.put("team2","madras");
         empMap.put("score1","");
         empMap.put("score2","");
         empMap.put("Day","");
@@ -68,7 +72,7 @@ public class femaleVolleyballFrag extends Fragment {
             ref.collection("matches")
                     .document(String.valueOf(i))
                     .set(empMap);
-        }*/
+        }
 
         badF.collection("VollyBall").document("female").collection("matches").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -82,7 +86,7 @@ public class femaleVolleyballFrag extends Fragment {
                 {
                     if(match.getType() == DocumentChange.Type.ADDED)
                     {
-                        list.add(new CardClass(R.drawable.madras,match.getDocument().get("team1").toString(),R.drawable.indore,match.getDocument().get("team2").toString() ));
+                        list.add(new CardClass(logoM.hashCode(match.getDocument().get("team1").toString()),match.getDocument().get("team1").toString(),R.drawable.indore,match.getDocument().get("team2").toString() ));
                     }
                     adapter=new listArrayAdapter(getActivity(),0,list);
                     lv.setAdapter(adapter);
