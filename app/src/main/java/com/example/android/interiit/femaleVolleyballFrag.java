@@ -10,16 +10,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -86,7 +85,7 @@ public class femaleVolleyballFrag extends Fragment {
                 {
                     if(match.getType() == DocumentChange.Type.ADDED)
                     {
-                        list.add(new CardClass(logoM.hashCode(match.getDocument().get("team1").toString()),match.getDocument().get("team1").toString(),R.drawable.indore,match.getDocument().get("team2").toString() ));
+                        list.add(new CardClass(Integer.valueOf(logoM.get(match.getDocument().get("team1"))),match.getDocument().get("team1").toString(),R.drawable.indore,match.getDocument().get("team2").toString() ));
                     }
                     adapter=new listArrayAdapter(getActivity(),0,list);
                     lv.setAdapter(adapter);
@@ -101,13 +100,15 @@ public class femaleVolleyballFrag extends Fragment {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                TextView score=view.findViewById(R.id.score);
+                LinearLayout scoreView=view.findViewById(R.id.score_view);
+                TextView score1=view.findViewById(R.id.score1);
+                TextView score2=view.findViewById(R.id.score2);
                 if(cursor[i]==0 ){
                     cursor[i]=1;
                     expand(view,250,0);
-                    score.setVisibility(View.VISIBLE);
-                    score.setText("0-0");
-
+                    scoreView.setVisibility(View.VISIBLE);
+                    score1.setText("0");
+                    score2.setText("0");
                 }
                 else{
                     cursor[i]=0;
@@ -121,9 +122,9 @@ public class femaleVolleyballFrag extends Fragment {
     public static void expand(final View v, int duration, int targetHeight) {
 
         int prevHeight  = v.getHeight();
-
+        targetHeight=3*prevHeight;
         v.setVisibility(View.VISIBLE);
-        ValueAnimator valueAnimator = ValueAnimator.ofInt(prevHeight, 2*prevHeight);
+        ValueAnimator valueAnimator = ValueAnimator.ofInt(prevHeight, targetHeight);
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
@@ -140,7 +141,8 @@ public class femaleVolleyballFrag extends Fragment {
 
     public static void collapse(final View v, int duration, int targetHeight) {
         int prevHeight  = v.getHeight();
-        ValueAnimator valueAnimator = ValueAnimator.ofInt(prevHeight, prevHeight/2);
+        targetHeight=prevHeight/3;
+        ValueAnimator valueAnimator = ValueAnimator.ofInt(prevHeight, targetHeight);
         valueAnimator.setInterpolator(new DecelerateInterpolator());
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
