@@ -1,0 +1,85 @@
+{
+  "project_info": {
+    "project_number": "1003507258180",
+    "firebase_url": "https://interiitsports.firebaseio.com",
+    "project_id": "interiitsports",
+    "storage_bucket": "interiitsports.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1003507258180:android:19c47f33dbffdaa25f3d11",
+        "android_client_info": {
+          "package_name": "com.example.android.inter_iit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1003507258180-st59g98s2v63p2brgq8366seik5o7kh4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.inter_iit",
+            "certificate_hash": "458efd01688ac3fac39785631fc29e775be857fa"
+          }
+        },
+        {
+          "client_id": "1003507258180-5svb986rns7m44necgpq30754em79d8i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_6S1uKLEC9ntnYW2aTlNzYlzK2qjLslA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1003507258180-5svb986rns7m44necgpq30754em79d8i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1003507258180:android:c5e908d78165db845f3d11",
+        "android_client_info": {
+          "package_name": "com.example.android.interiit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1003507258180-fnv43cl9av9g5t8u9462r4g82iqejqfv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.interiit",
+            "certificate_hash": "458efd01688ac3fac39785631fc29e775be857fa"
+          }
+        },
+        {
+          "client_id": "1003507258180-5svb986rns7m44necgpq30754em79d8i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_6S1uKLEC9ntnYW2aTlNzYlzK2qjLslA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1003507258180-5svb986rns7m44necgpq30754em79d8i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
