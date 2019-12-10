@@ -26,5 +26,7 @@ public class CardClass {
     public int getLogo2(){
         return l2;
     }
-    public int getMatchNo(){return matchNo;}
+    public int getMatchNo(){
+        return matchNo;
+    }
 }

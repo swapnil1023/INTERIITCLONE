@@ -44,7 +44,7 @@ public class listArrayAdapter extends ArrayAdapter<CardClass> {
         logo2.setImageResource(currentData.getLogo2());
 
         TextView matchNumber=listItemView.findViewById(R.id.match_number);
-        matchNumber.setText(currentData.getMatchNo());
+        matchNumber.setText(Integer.toString(currentData.getMatchNo()));
 
         return listItemView;
     }
