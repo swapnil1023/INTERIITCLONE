@@ -6,11 +6,13 @@ public class CardClass {
     private String mT2;
     private int l1;
     private int l2;
-    public CardClass(int Logo1,String Team1,int Logo2,String Team2) {
+    private int matchNo;
+    public CardClass(int no,int Logo1,String Team1,int Logo2,String Team2) {
         mT1=Team1;
         mT2=Team2;
         l1=Logo1;
         l2=Logo2;
+        matchNo = no;
     }
     public String getTeam1(){
         return mT1;
@@ -24,4 +26,5 @@ public class CardClass {
     public int getLogo2(){
         return l2;
     }
+    public int getMatchNo(){return matchNo;}
 }

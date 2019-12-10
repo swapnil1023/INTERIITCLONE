@@ -55,7 +55,7 @@ public class femaleVolleyballFrag extends Fragment {
         list.add(new CardClass(R.drawable.madras ,"IIT Madras",R.drawable.indore,"IIT Indore" ));
         list.add(new CardClass(R.drawable.madras ,"IIT Madras",R.drawable.indore,"IIT Indore" ));*/
 
-        Map empMap= new HashMap<>();
+       /* Map empMap= new HashMap<>();
         empMap.put("team1","madras");
         empMap.put("team2","madras");
         empMap.put("score1","");
@@ -68,12 +68,13 @@ public class femaleVolleyballFrag extends Fragment {
 
         for(int i=1 ; i<=32; i++)
         {
+            empMap.put("MNo",i);
             ref.collection("matches")
                     .document(String.valueOf(i))
                     .set(empMap);
-        }
+        }*/
 
-        badF.collection("VollyBall").document("female").collection("matches").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        badF.collection("VollyBall").document("female").collection("matches").orderBy("MNo").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e)
             {
@@ -87,7 +88,7 @@ public class femaleVolleyballFrag extends Fragment {
                     {
                         int uri1 = (int) logoM.get(match.getDocument().get("team1"));
                         int uri2 = (int) logoM.get(match.getDocument().get("team2"));
-                        list.add(new CardClass(uri1,match.getDocument().get("team1").toString(),uri2,match.getDocument().get("team2").toString() ));
+                        list.add(new CardClass(Integer.parseInt(match.getDocument().getId()),uri1,match.getDocument().get("team1").toString(),uri2,match.getDocument().get("team2").toString() ));
                     }
                     adapter=new listArrayAdapter(getActivity(),0,list);
                     lv.setAdapter(adapter);
