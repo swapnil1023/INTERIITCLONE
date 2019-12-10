@@ -43,6 +43,9 @@ public class listArrayAdapter extends ArrayAdapter<CardClass> {
         ImageView logo2 = listItemView.findViewById(R.id.logo2);
         logo2.setImageResource(currentData.getLogo2());
 
+        TextView matchNumber=listItemView.findViewById(R.id.match_number);
+        matchNumber.setText(currentData.getMatchNo());
+
         return listItemView;
     }
 }
