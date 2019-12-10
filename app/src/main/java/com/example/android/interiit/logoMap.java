@@ -34,7 +34,11 @@ public class logoMap {
         logo.put("jammu",R.drawable.jammu);
         logo.put("dharwad",R.drawable.dharwad);
 
+    }
 
+    public Map getMap()
+    {
+        return logo;
     }
 
 }
