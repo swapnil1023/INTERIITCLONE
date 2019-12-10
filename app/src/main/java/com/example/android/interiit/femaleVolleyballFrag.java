@@ -12,6 +12,7 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.Task;
@@ -100,7 +101,7 @@ public class femaleVolleyballFrag extends Fragment {
             }
         });
 
-        final int [] cursor=new int[20];
+        final int [] cursor=new int[32];
         /*listArrayAdapter adapter=new listArrayAdapter(getActivity(),0,list);
         lv.setAdapter(adapter);*/
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -115,7 +116,7 @@ public class femaleVolleyballFrag extends Fragment {
 
 
                 LinearLayout scoreView=view.findViewById(R.id.score_view);
-                LinearLayout location=view.findViewById(R.id.location);
+                RelativeLayout location=view.findViewById(R.id.location);
                 TextView score1=view.findViewById(R.id.score1);
                 TextView score2=view.findViewById(R.id.score2);
                 TextView court=view.findViewById(R.id.court);
@@ -127,8 +128,8 @@ public class femaleVolleyballFrag extends Fragment {
                     location.setVisibility(View.VISIBLE);
                     score1.setText(ds.get("score1").toString());
                     score2.setText(ds.get("score2").toString());
-                    court.setText(ds.get("Court").toString());
-                    day.setText(ds.get("Day").toString());
+                    court.setText("Court No."+ds.get("Court").toString());
+                    day.setText("Day "+ds.get("Day").toString());
                 }
                 else{
                     cursor[i]=0;
@@ -139,10 +140,16 @@ public class femaleVolleyballFrag extends Fragment {
         return rootView;
     }
 
+
+
+
+
+
+
     public static void expand(final View v, int duration, int targetHeight) {
 
         int prevHeight  = v.getHeight();
-        targetHeight=3*prevHeight;
+        targetHeight=2*prevHeight;
         v.setVisibility(View.VISIBLE);
         ValueAnimator valueAnimator = ValueAnimator.ofInt(prevHeight, targetHeight);
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -161,7 +168,7 @@ public class femaleVolleyballFrag extends Fragment {
 
     public static void collapse(final View v, int duration, int targetHeight) {
         int prevHeight  = v.getHeight();
-        targetHeight=prevHeight/3;
+        targetHeight=prevHeight/2;
         ValueAnimator valueAnimator = ValueAnimator.ofInt(prevHeight, targetHeight);
         valueAnimator.setInterpolator(new DecelerateInterpolator());
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
