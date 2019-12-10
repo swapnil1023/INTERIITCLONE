@@ -13,8 +13,11 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -103,15 +106,29 @@ public class femaleVolleyballFrag extends Fragment {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                Task<DocumentSnapshot> task;
+                task = badF.collection("VollyBall").document("female").collection("matches").document(String.valueOf(i+1)).get();
+                while(!task.isComplete());
+
+                DocumentSnapshot ds = task.getResult();
+
+
                 LinearLayout scoreView=view.findViewById(R.id.score_view);
+                LinearLayout location=view.findViewById(R.id.location);
                 TextView score1=view.findViewById(R.id.score1);
                 TextView score2=view.findViewById(R.id.score2);
+                TextView court=view.findViewById(R.id.court);
+                TextView day=view.findViewById(R.id.day);
                 if(cursor[i]==0 ){
                     cursor[i]=1;
                     expand(view,250,0);
                     scoreView.setVisibility(View.VISIBLE);
-                    score1.setText("0");
-                    score2.setText("0");
+                    location.setVisibility(View.VISIBLE);
+                    score1.setText(ds.get("score1").toString());
+                    score2.setText(ds.get("score2").toString());
+                    court.setText(ds.get("Court").toString());
+                    day.setText(ds.get("Day").toString());
                 }
                 else{
                     cursor[i]=0;
