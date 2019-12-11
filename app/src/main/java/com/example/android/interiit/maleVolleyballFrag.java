@@ -29,8 +29,6 @@ import java.util.Map;
 
 import javax.annotation.Nullable;
 
-import static com.example.android.interiit.femaleVolleyballFrag.collapse;
-import static com.example.android.interiit.femaleVolleyballFrag.expand;
 
 public class maleVolleyballFrag extends Fragment {
 
@@ -151,7 +149,7 @@ public class maleVolleyballFrag extends Fragment {
                 }
                 else{
                     cursor[i]=0;
-                    collapse(view,250,0);
+                    status.setVisibility(View.GONE);
                 }
             }
         });
@@ -159,43 +157,6 @@ public class maleVolleyballFrag extends Fragment {
 
 
 
-    }
-
-    public static void expand(final View v, int duration, int targetHeight) {
-
-        int prevHeight  = v.getHeight();
-        targetHeight=3*prevHeight;
-        v.setVisibility(View.VISIBLE);
-        ValueAnimator valueAnimator = ValueAnimator.ofInt(prevHeight, targetHeight);
-        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                v.getLayoutParams().height = (int) animation.getAnimatedValue();
-                v.requestLayout();
-            }
-        });
-        valueAnimator.setInterpolator(new DecelerateInterpolator());
-        valueAnimator.setDuration(duration);
-        valueAnimator.start();
-    }
-
-
-
-    public static void collapse(final View v, int duration, int targetHeight) {
-        int prevHeight  = v.getHeight();
-        targetHeight=prevHeight/3;
-        ValueAnimator valueAnimator = ValueAnimator.ofInt(prevHeight, targetHeight);
-        valueAnimator.setInterpolator(new DecelerateInterpolator());
-        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                v.getLayoutParams().height = (int) animation.getAnimatedValue();
-                v.requestLayout();
-            }
-        });
-        valueAnimator.setInterpolator(new DecelerateInterpolator());
-        valueAnimator.setDuration(duration);
-        valueAnimator.start();
     }
 
 }

@@ -1,35 +1,28 @@
 package com.example.android.interiit;
 
 import androidx.fragment.app.Fragment;
-
-import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.DecelerateInterpolator;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentChange;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
-
 import javax.annotation.Nullable;
 
 public class femaleVolleyballFrag extends Fragment {
+
 
     ListView lv;
     listArrayAdapter adapter;
@@ -94,7 +87,9 @@ public class femaleVolleyballFrag extends Fragment {
             }
         });
 
-        final int [] cursor=new int[32];
+
+
+        final int [] cursor=new int[36];
         /*listArrayAdapter adapter=new listArrayAdapter(getActivity(),0,list);
         lv.setAdapter(adapter);*/
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -144,40 +139,14 @@ public class femaleVolleyballFrag extends Fragment {
                     }
                 }
                 else{
-
-                    collapse(view,50,0);
-                    status.setVisibility(View.GONE);
                     cursor[i]=0;
+                    location.setVisibility(View.GONE);
+                    status.setVisibility(View.GONE);
+                    scoreView1.setVisibility(View.GONE);
+
                 }
             }
         });
         return rootView;
     }
-
-
-
-
-
-
-
-
-
-
-    public static void collapse(final View v, int duration, int targetHeight) {
-        int prevHeight  = v.getHeight();
-        targetHeight=178;
-        ValueAnimator valueAnimator = ValueAnimator.ofInt(prevHeight, targetHeight);
-        valueAnimator.setInterpolator(new DecelerateInterpolator());
-        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                v.getLayoutParams().height = (int) animation.getAnimatedValue();
-                v.requestLayout();
-            }
-        });
-        valueAnimator.setInterpolator(new DecelerateInterpolator());
-        valueAnimator.setDuration(duration);
-        valueAnimator.start();
-    }
-
 }
