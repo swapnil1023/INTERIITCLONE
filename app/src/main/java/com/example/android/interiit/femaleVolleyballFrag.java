@@ -59,11 +59,16 @@ public class femaleVolleyballFrag extends Fragment {
         list.add(new CardClass(R.drawable.madras ,"IIT Madras",R.drawable.indore,"IIT Indore" ));
         list.add(new CardClass(R.drawable.madras ,"IIT Madras",R.drawable.indore,"IIT Indore" ));*/
 
-       /* Map empMap= new HashMap<>();
+        Map empMap= new HashMap<>();
+        empMap.put("flag","0");
         empMap.put("team1","madras");
         empMap.put("team2","madras");
-        empMap.put("score1","");
-        empMap.put("score2","");
+        empMap.put("s1score1","");
+        empMap.put("s1score2","");
+        empMap.put("s2score1","");
+        empMap.put("s2score2","");
+        empMap.put("s3score1","");
+        empMap.put("s3score2","");
         empMap.put("Day","");
         empMap.put("Time","");
         empMap.put("Court","");
@@ -76,7 +81,7 @@ public class femaleVolleyballFrag extends Fragment {
             ref.collection("matches")
                     .document(String.valueOf(i))
                     .set(empMap);
-        }*/
+        }
 
         badF.collection("VollyBall").document("female").collection("matches").orderBy("MNo").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -122,16 +127,22 @@ public class femaleVolleyballFrag extends Fragment {
                 TextView court=view.findViewById(R.id.court);
                 TextView day=view.findViewById(R.id.day);
                 TextView time=view.findViewById(R.id.time);
+                TextView status=view.findViewById(R.id.match_status);
                 if(cursor[i]==0 ){
                     cursor[i]=1;
                     expand(view,250,0);
-                    scoreView.setVisibility(View.VISIBLE);
-                    location.setVisibility(View.VISIBLE);
-                    score1.setText(ds.get("score1").toString());
-                    score2.setText(ds.get("score2").toString());
-                    court.setText("Court No."+ds.get("Court").toString());
-                    day.setText("Day "+ds.get("Day").toString());
-                    time.setText(ds.get("Time").toString());
+                    if(ds.get("flag").toString().equals("0"))
+                        status.setVisibility(View.VISIBLE);
+                    else {
+                        status.setVisibility(View.GONE);
+                        scoreView.setVisibility(View.VISIBLE);
+                        location.setVisibility(View.VISIBLE);
+                        score1.setText(ds.get("s1score1").toString());
+                        score2.setText(ds.get("s1score2").toString());
+                        court.setText("Court No." + ds.get("Court").toString());
+                        day.setText("Day " + ds.get("Day").toString());
+                        time.setText(ds.get("Time").toString());
+                    }
                 }
                 else{
                     cursor[i]=0;
