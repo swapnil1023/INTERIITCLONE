@@ -10,30 +10,30 @@ public class logoMap {
 
     public logoMap()
     {
-        logo.put("madras",R.drawable.madras);
-        logo.put("indore",R.drawable.indore);
-        logo.put("kharagpur",R.drawable.kharagpur);
-        logo.put("bhilai",R.drawable.bhilai);
-        logo.put("bombay",R.drawable.bombay);
-        logo.put("dhanbad",R.drawable.dhanbad);
-        logo.put("delhi",R.drawable.delhi);
-        logo.put("roorkee",R.drawable.roorkee);
-        logo.put("ropar",R.drawable.ropar);
-        logo.put("tirupati",R.drawable.tirupati);
-        logo.put("kanpur",R.drawable.kanpur);
+        logo.put("Madras",R.drawable.madras);
+        logo.put("Indore",R.drawable.indore);
+        logo.put("Kharagpur",R.drawable.kharagpur);
+        logo.put("Bhilai",R.drawable.bhilai);
+        logo.put("Bombay",R.drawable.bombay);
+        logo.put("Dhanbad",R.drawable.dhanbad);
+        logo.put("Delhi",R.drawable.delhi);
+        logo.put("Roorkee",R.drawable.roorkee);
+        logo.put("Ropar",R.drawable.ropar);
+        logo.put("Tirupati",R.drawable.tirupati);
+        logo.put("Kanpur",R.drawable.kanpur);
         logo.put("BHU",R.drawable.bhu);
-        logo.put("gandhinagar",R.drawable.gandhinagar);
-        logo.put("guwahati",R.drawable.guwahati);
-        logo.put("bhubaneswar",R.drawable.bhubaneswar);
-        logo.put("hyderabad",R.drawable.hyderabad);
-        logo.put("jodhpur",R.drawable.jodhpur);
-        logo.put("patna",R.drawable.patna);
-        logo.put("mandi",R.drawable.mandi);
-        logo.put("palakkad",R.drawable.palakkad);
-        logo.put("goa",R.drawable.goa);
-        logo.put("jammu",R.drawable.jammu);
-        logo.put("dharwad",R.drawable.dharwad);
-
+        logo.put("Gandhinagar",R.drawable.gandhinagar);
+        logo.put("Guwahati",R.drawable.guwahati);
+        logo.put("Bhubaneswar",R.drawable.bhubaneswar);
+        logo.put("Hyderabad",R.drawable.hyderabad);
+        logo.put("Jodhpur",R.drawable.jodhpur);
+        logo.put("Patna",R.drawable.patna);
+        logo.put("Mandi",R.drawable.mandi);
+        logo.put("Palakkad",R.drawable.palakkad);
+        logo.put("Goa",R.drawable.goa);
+        logo.put("Jammu",R.drawable.jammu);
+        logo.put("Dharwad",R.drawable.dharwad);
+        logo.put("NA",R.drawable.na);
     }
 
     public Map getMap()
