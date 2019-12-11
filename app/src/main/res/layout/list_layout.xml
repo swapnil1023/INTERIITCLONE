@@ -142,7 +142,7 @@
             android:gravity="center_horizontal"
             android:textColor="#F70303"
             android:visibility="gone"
-            tools:text="Match is yet to start"
+            android:text="Match is yet to start"
             tools:visibility="visible" />
 
         <LinearLayout
