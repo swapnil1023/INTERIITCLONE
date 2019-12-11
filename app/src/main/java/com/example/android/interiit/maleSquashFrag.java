@@ -11,10 +11,13 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -47,24 +50,29 @@ public class maleSquashFrag extends Fragment {
         badF = FirebaseFirestore.getInstance();
         final ArrayList<CardClass> list=new ArrayList<>() ;
 
-        Map empMap= new HashMap<>();
+        /*Map empMap= new HashMap<>();
+        empMap.put("flag","0");
         empMap.put("team1","madras");
         empMap.put("team2","madras");
-        empMap.put("score1","");
-        empMap.put("score2","");
+        empMap.put("s1score1","");
+        empMap.put("s1score2","");
+        empMap.put("s2score1","");
+        empMap.put("s2score2","");
+        empMap.put("s3score1","");
+        empMap.put("s3score2","");
         empMap.put("Day","");
         empMap.put("Time","");
         empMap.put("Court","");
 
         DocumentReference ref = badF.collection("Squash").document("male");
 
-        for(int i=1 ; i<=18; i++)
+        for(int i=1 ; i<=32; i++)
         {
             empMap.put("MNo",i);
             ref.collection("matches")
                     .document(String.valueOf(i))
                     .set(empMap);
-        }
+        }*/
 
         badF.collection("Squash").document("male").collection("matches").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -89,21 +97,43 @@ public class maleSquashFrag extends Fragment {
             }
         });
 
-        final int [] cursor=new int[20];
+        final int [] cursor=new int[32];
         /*listArrayAdapter adapter=new listArrayAdapter(getActivity(),0,list);
         lv.setAdapter(adapter);*/
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                Task<DocumentSnapshot> task;
+                task = badF.collection("Squash").document("male").collection("matches").document(String.valueOf(i+1)).get();
+                while(!task.isComplete());
+
+                DocumentSnapshot ds = task.getResult();
+
+
                 LinearLayout scoreView=view.findViewById(R.id.score_view);
+                RelativeLayout location=view.findViewById(R.id.location);
                 TextView score1=view.findViewById(R.id.score1);
                 TextView score2=view.findViewById(R.id.score2);
+                TextView court=view.findViewById(R.id.court);
+                TextView day=view.findViewById(R.id.day);
+                TextView time=view.findViewById(R.id.time);
+                TextView status=view.findViewById(R.id.match_status);
                 if(cursor[i]==0 ){
                     cursor[i]=1;
                     expand(view,250,0);
-                    scoreView.setVisibility(View.VISIBLE);
-                    score1.setText("0");
-                    score2.setText("0");
+                    if(ds.get("flag").toString().equals("0"))
+                        status.setVisibility(View.VISIBLE);
+                    else {
+                        status.setVisibility(View.GONE);
+                        scoreView.setVisibility(View.VISIBLE);
+                        location.setVisibility(View.VISIBLE);
+                        score1.setText(ds.get("s1score1").toString());
+                        score2.setText(ds.get("s1score2").toString());
+                        court.setText("Court No." + ds.get("Court").toString());
+                        day.setText("Day " + ds.get("Day").toString());
+                        time.setText(ds.get("Time").toString());
+                    }
                 }
                 else{
                     cursor[i]=0;

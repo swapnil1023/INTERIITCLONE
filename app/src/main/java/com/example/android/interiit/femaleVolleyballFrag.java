@@ -47,19 +47,9 @@ public class femaleVolleyballFrag extends Fragment {
         final FirebaseFirestore badF;
         badF = FirebaseFirestore.getInstance();
         final ArrayList<CardClass> list=new ArrayList<>() ;
-        /*list.add(new CardClass(R.drawable.madras ,"IIT Female VOLLEY",R.drawable.indore,"IIT Indore" ));
-        list.add(new CardClass(R.drawable.madras ,"IIT Masdja",R.drawable.indore,"IIT MAdr" ));
-        list.add(new CardClass(R.drawable.madras ,"IIT Mad",R.drawable.indore,"IIT M" ));
-        list.add(new CardClass(R.drawable.madras ,"IIT Madras",R.drawable.indore,"IIT Indore" ));
-        list.add(new CardClass(R.drawable.madras ,"IIT Madras",R.drawable.indore,"IIT Indore" ));
-        list.add(new CardClass(R.drawable.madras ,"IIT Madras",R.drawable.indore,"IIT Indore" ));
-        list.add(new CardClass(R.drawable.madras ,"IIT Madras",R.drawable.indore,"IIT Indore" ));
-        list.add(new CardClass(R.drawable.madras ,"IIT Madras",R.drawable.indore,"IIT Indore" ));
-        list.add(new CardClass(R.drawable.madras ,"IIT Madras",R.drawable.indore,"IIT Indore" ));
-        list.add(new CardClass(R.drawable.madras ,"IIT Madras",R.drawable.indore,"IIT Indore" ));
-        list.add(new CardClass(R.drawable.madras ,"IIT Madras",R.drawable.indore,"IIT Indore" ));*/
 
-        Map empMap= new HashMap<>();
+
+        /*Map empMap= new HashMap<>();
         empMap.put("flag","0");
         empMap.put("team1","madras");
         empMap.put("team2","madras");
@@ -81,7 +71,7 @@ public class femaleVolleyballFrag extends Fragment {
             ref.collection("matches")
                     .document(String.valueOf(i))
                     .set(empMap);
-        }
+        }*/
 
         badF.collection("VollyBall").document("female").collection("matches").orderBy("MNo").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
