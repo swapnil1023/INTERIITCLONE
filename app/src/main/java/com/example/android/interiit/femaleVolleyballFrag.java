@@ -121,6 +121,7 @@ public class femaleVolleyballFrag extends Fragment {
                 TextView score2=view.findViewById(R.id.score2);
                 TextView court=view.findViewById(R.id.court);
                 TextView day=view.findViewById(R.id.day);
+                TextView time=view.findViewById(R.id.time);
                 if(cursor[i]==0 ){
                     cursor[i]=1;
                     expand(view,250,0);
@@ -130,6 +131,7 @@ public class femaleVolleyballFrag extends Fragment {
                     score2.setText(ds.get("score2").toString());
                     court.setText("Court No."+ds.get("Court").toString());
                     day.setText("Day "+ds.get("Day").toString());
+                    time.setText(ds.get("Time").toString());
                 }
                 else{
                     cursor[i]=0;
