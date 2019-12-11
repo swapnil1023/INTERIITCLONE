@@ -109,10 +109,16 @@ public class femaleVolleyballFrag extends Fragment {
                 DocumentSnapshot ds = task.getResult();
 
 
-                LinearLayout scoreView=view.findViewById(R.id.score_view_set1);
+                LinearLayout scoreView1=view.findViewById(R.id.score_view_set1);
+                LinearLayout scoreView2=view.findViewById(R.id.score_view_set2);
+                LinearLayout scoreView3=view.findViewById(R.id.score_view_set3);
                 RelativeLayout location=view.findViewById(R.id.location);
-                TextView score1=view.findViewById(R.id.score1set1);
-                TextView score2=view.findViewById(R.id.score2set1);
+                TextView set1score1=view.findViewById(R.id.score1set1);
+                TextView set1score2=view.findViewById(R.id.score2set1);
+                TextView set2score1=view.findViewById(R.id.score1set2);
+                TextView set2score2=view.findViewById(R.id.score2set2);
+                TextView set3score1=view.findViewById(R.id.score1set3);
+                TextView set3score2=view.findViewById(R.id.score2set3);
                 TextView court=view.findViewById(R.id.court);
                 TextView day=view.findViewById(R.id.day);
                 TextView time=view.findViewById(R.id.time);
@@ -123,10 +129,18 @@ public class femaleVolleyballFrag extends Fragment {
                         status.setVisibility(View.VISIBLE);
                     else {
                         status.setVisibility(View.GONE);
-                        scoreView.setVisibility(View.VISIBLE);
+                        scoreView1.setVisibility(View.VISIBLE);
                         location.setVisibility(View.VISIBLE);
-                        score1.setText(ds.get("s1score1").toString());
-                        score2.setText(ds.get("s1score2").toString());
+                        if(!ds.get("s2score1").toString().equals(""))
+                            scoreView2.setVisibility(View.VISIBLE);
+                        if(!ds.get("s3score1").toString().equals(""))
+                            scoreView3.setVisibility(View.VISIBLE);
+                        set1score1.setText(ds.get("s1score1").toString());
+                        set1score2.setText(ds.get("s1score2").toString());
+                        set2score1.setText(ds.get("s2score1").toString());
+                        set2score2.setText(ds.get("s2score2").toString());
+                        set3score1.setText(ds.get("s3score1").toString());
+                        set3score2.setText(ds.get("s3score1").toString());
                         court.setText("Court No." + ds.get("Court").toString());
                         day.setText("Day " + ds.get("Day").toString());
                         time.setText(ds.get("Time").toString());

@@ -114,8 +114,8 @@ public class femaleTableTennisFrag extends Fragment {
 
                 LinearLayout scoreView=view.findViewById(R.id.score_view_set1);
                 RelativeLayout location=view.findViewById(R.id.location);
-                TextView score1=view.findViewById(R.id.score1);
-                TextView score2=view.findViewById(R.id.score2);
+                TextView score1=view.findViewById(R.id.score1set1);
+                TextView score2=view.findViewById(R.id.score2set1);
                 TextView court=view.findViewById(R.id.court);
                 TextView day=view.findViewById(R.id.day);
                 TextView time=view.findViewById(R.id.time);
