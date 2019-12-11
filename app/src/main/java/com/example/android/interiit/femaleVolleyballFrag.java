@@ -1,14 +1,13 @@
 package com.example.android.interiit;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.DecelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -91,18 +90,18 @@ public class femaleVolleyballFrag extends Fragment {
                 {
                     // Toast.makeText(Volleyball.this,"some exception",Toast.LENGTH_SHORT).show();
                 }
-                for(DocumentChange match: queryDocumentSnapshots.getDocumentChanges())
-                {
-                    if(match.getType() == DocumentChange.Type.ADDED)
-                    {
+                for(DocumentChange match: queryDocumentSnapshots.getDocumentChanges()) {
+                    if (match.getType() == DocumentChange.Type.ADDED) {
                         int uri1 = (int) logoM.get(match.getDocument().get("team1"));
                         int uri2 = (int) logoM.get(match.getDocument().get("team2"));
-                        list.add(new CardClass(Integer.parseInt(match.getDocument().getId()),uri1,match.getDocument().get("team1").toString(),uri2,match.getDocument().get("team2").toString() ));
+                        list.add(new CardClass(Integer.parseInt(match.getDocument().getId()), uri1, match.getDocument().get("team1").toString(), uri2, match.getDocument().get("team2").toString()));
                     }
-                    adapter=new listArrayAdapter(getActivity(),0,list);
-                    lv.setAdapter(adapter);
-
                 }
+
+                adapter=new listArrayAdapter(getActivity(),0,list);
+                lv.setAdapter(adapter);
+
+
             }
         });
 
@@ -120,17 +119,16 @@ public class femaleVolleyballFrag extends Fragment {
                 DocumentSnapshot ds = task.getResult();
 
 
-                LinearLayout scoreView=view.findViewById(R.id.score_view);
+                LinearLayout scoreView=view.findViewById(R.id.score_view_set1);
                 RelativeLayout location=view.findViewById(R.id.location);
-                TextView score1=view.findViewById(R.id.score1);
-                TextView score2=view.findViewById(R.id.score2);
+                TextView score1=view.findViewById(R.id.score1set1);
+                TextView score2=view.findViewById(R.id.score2set1);
                 TextView court=view.findViewById(R.id.court);
                 TextView day=view.findViewById(R.id.day);
                 TextView time=view.findViewById(R.id.time);
                 TextView status=view.findViewById(R.id.match_status);
                 if(cursor[i]==0 ){
                     cursor[i]=1;
-                    expand(view,250,0);
                     if(ds.get("flag").toString().equals("0"))
                         status.setVisibility(View.VISIBLE);
                     else {
@@ -145,8 +143,8 @@ public class femaleVolleyballFrag extends Fragment {
                     }
                 }
                 else{
+                    status.setVisibility(View.GONE);
                     cursor[i]=0;
-                    collapse(view,250,0);
                 }
             }
         });
@@ -159,41 +157,63 @@ public class femaleVolleyballFrag extends Fragment {
 
 
 
-    public static void expand(final View v, int duration, int targetHeight) {
+    public static void expand(final View v) {
 
-        int prevHeight  = v.getHeight();
-        targetHeight=2*prevHeight;
+        int matchParentMeasureSpec = View.MeasureSpec.makeMeasureSpec(((View) v.getParent()).getWidth(), View.MeasureSpec.EXACTLY);
+        int wrapContentMeasureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+        v.measure(matchParentMeasureSpec, wrapContentMeasureSpec);
+        final int targetHeight = v.getMeasuredHeight();
+
+        // Older versions of android (pre API 21) cancel animations for views with a height of 0.
+        v.getLayoutParams().height = 1;
         v.setVisibility(View.VISIBLE);
-        ValueAnimator valueAnimator = ValueAnimator.ofInt(prevHeight, targetHeight);
-        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+        Animation a = new Animation()
+        {
             @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                v.getLayoutParams().height = (int) animation.getAnimatedValue();
+            protected void applyTransformation(float interpolatedTime, android.view.animation.Transformation t) {
+                v.getLayoutParams().height = interpolatedTime == 1
+                        ? ViewGroup.LayoutParams.WRAP_CONTENT
+                        : (int)(targetHeight * interpolatedTime);
                 v.requestLayout();
             }
-        });
-        valueAnimator.setInterpolator(new DecelerateInterpolator());
-        valueAnimator.setDuration(duration);
-        valueAnimator.start();
+
+            @Override
+            public boolean willChangeBounds() {
+                return true;
+            }
+        };
+
+        // Expansion speed of 1dp/ms
+        a.setDuration((int)(targetHeight / v.getContext().getResources().getDisplayMetrics().density));
+        v.startAnimation(a);
     }
 
 
 
-    public static void collapse(final View v, int duration, int targetHeight) {
-        int prevHeight  = v.getHeight();
-        targetHeight=prevHeight/2;
-        ValueAnimator valueAnimator = ValueAnimator.ofInt(prevHeight, targetHeight);
-        valueAnimator.setInterpolator(new DecelerateInterpolator());
-        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+    public static void collapse(final View v) {
+        final int initialHeight = v.getMeasuredHeight();
+
+        Animation a = new Animation()
+        {
             @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                v.getLayoutParams().height = (int) animation.getAnimatedValue();
-                v.requestLayout();
+            protected void applyTransformation(float interpolatedTime, Transformation t) {
+                if(interpolatedTime == 1){
+                    v.setVisibility(View.GONE);
+                }else{
+                    v.getLayoutParams().height = initialHeight - (int)(initialHeight * interpolatedTime);
+                    v.requestLayout();
+                }
             }
-        });
-        valueAnimator.setInterpolator(new DecelerateInterpolator());
-        valueAnimator.setDuration(duration);
-        valueAnimator.start();
+
+            @Override
+            public boolean willChangeBounds() {
+                return true;
+            }
+        };
+
+        // Collapse speed of 1dp/ms
+        a.setDuration((int)(initialHeight / v.getContext().getResources().getDisplayMetrics().density));
+        v.startAnimation(a);
     }
 
 }

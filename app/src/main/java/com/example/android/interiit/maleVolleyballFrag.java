@@ -96,9 +96,9 @@ public class maleVolleyballFrag extends Fragment {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                LinearLayout scoreView=view.findViewById(R.id.score_view);
-                TextView score1=view.findViewById(R.id.score1);
-                TextView score2=view.findViewById(R.id.score2);
+                LinearLayout scoreView=view.findViewById(R.id.score_view_set1);
+                TextView score1=view.findViewById(R.id.score1set1);
+                TextView score2=view.findViewById(R.id.score2set1);
                 if(cursor[i]==0 ){
                     cursor[i]=1;
                     expand(view,250,0);
