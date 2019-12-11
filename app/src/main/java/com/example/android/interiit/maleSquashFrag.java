@@ -29,8 +29,6 @@ import java.util.Map;
 
 import javax.annotation.Nullable;
 
-import static com.example.android.interiit.femaleVolleyballFrag.collapse;
-import static com.example.android.interiit.femaleVolleyballFrag.expand;
 
 public class maleSquashFrag extends Fragment {
 

@@ -1,7 +1,9 @@
 package com.example.android.interiit;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import android.animation.LayoutTransition;
 import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -30,6 +32,7 @@ import java.util.Map;
 import javax.annotation.Nullable;
 
 public class femaleVolleyballFrag extends Fragment {
+
 
     ListView lv;
     listArrayAdapter adapter;
@@ -94,6 +97,8 @@ public class femaleVolleyballFrag extends Fragment {
             }
         });
 
+
+
         final int [] cursor=new int[32];
         /*listArrayAdapter adapter=new listArrayAdapter(getActivity(),0,list);
         lv.setAdapter(adapter);*/
@@ -144,8 +149,6 @@ public class femaleVolleyballFrag extends Fragment {
                     }
                 }
                 else{
-
-                    collapse(view,50,0);
                     status.setVisibility(View.GONE);
                     cursor[i]=0;
                 }
