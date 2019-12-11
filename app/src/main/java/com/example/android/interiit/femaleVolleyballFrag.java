@@ -81,7 +81,6 @@ public class femaleVolleyballFrag extends Fragment {
                         list.add(new CardClass(Integer.parseInt(match.getDocument().getId()), uri1, match.getDocument().get("team1").toString(), uri2, match.getDocument().get("team2").toString()));
                     }
                 }
-
                 adapter=new listArrayAdapter(getActivity(),0,list);
                 lv.setAdapter(adapter);
             }
