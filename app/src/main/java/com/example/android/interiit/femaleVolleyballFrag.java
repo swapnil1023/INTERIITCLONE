@@ -89,7 +89,7 @@ public class femaleVolleyballFrag extends Fragment {
 
 
 
-        final int [] cursor=new int[32];
+        final int [] cursor=new int[36];
         /*listArrayAdapter adapter=new listArrayAdapter(getActivity(),0,list);
         lv.setAdapter(adapter);*/
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {

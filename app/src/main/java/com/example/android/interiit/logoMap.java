@@ -11,6 +11,7 @@ public class logoMap {
     public logoMap()
     {
         logo.put("Madras",R.drawable.madras);
+        logo.put("madras",R.drawable.madras);
         logo.put("Indore",R.drawable.indore);
         logo.put("Kharagpur",R.drawable.kharagpur);
         logo.put("Bhilai",R.drawable.bhilai);
