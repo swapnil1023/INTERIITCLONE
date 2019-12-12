@@ -123,18 +123,18 @@ public class maleVolleyballFrag extends Fragment {
             }
         });
 
-        final int [] cursor=new int[32];
+        final int [] cursor=new int[36];
         /*listArrayAdapter adapter=new listArrayAdapter(getActivity(),0,list);
         lv.setAdapter(adapter);*/
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
                 Task<DocumentSnapshot> task;
                 task = badF.collection("VollyBall").document("male").collection("matches").document(String.valueOf(i+1)).get();
                 while(!task.isComplete());
 
                 DocumentSnapshot ds = task.getResult();
+
 
 
              final    LinearLayout scoreView1=view.findViewById(R.id.score_view_set1);
@@ -143,6 +143,7 @@ public class maleVolleyballFrag extends Fragment {
                 final LinearLayout scoreView4=view.findViewById(R.id.score_view_set4);
               final   LinearLayout scoreView5=view.findViewById(R.id.score_view_set5);
                final RelativeLayout location=view.findViewById(R.id.location);
+
                 TextView set1score1=view.findViewById(R.id.score1set1);
                 TextView set1score2=view.findViewById(R.id.score2set1);
                 TextView set2score1=view.findViewById(R.id.score1set2);
@@ -153,9 +154,11 @@ public class maleVolleyballFrag extends Fragment {
                 TextView set4score2=view.findViewById(R.id.score2set4);
                 TextView set5score1=view.findViewById(R.id.score1set5);
                 TextView set5score2=view.findViewById(R.id.score2set5);
+
                 TextView court=view.findViewById(R.id.court);
                 TextView day=view.findViewById(R.id.day);
                 TextView time=view.findViewById(R.id.time);
+
                final TextView status=view.findViewById(R.id.match_status);
 
                 ListView lsv=rootView.findViewById(R.id.Schedule);
@@ -190,10 +193,11 @@ public class maleVolleyballFrag extends Fragment {
 
                     }
                 });
+
                 if(cursor[i]==0 ){
                     cursor[i]=1;
                     location.setVisibility(View.VISIBLE);
-                    court.setText("Court No." + ds.get("Court").toString());
+                    court.setText("Court No. " + ds.get("Court").toString());
                     day.setText("Day " + ds.get("Day").toString());
                     time.setText(ds.get("Time").toString());
                     if(ds.get("flag").toString().equals("0")){

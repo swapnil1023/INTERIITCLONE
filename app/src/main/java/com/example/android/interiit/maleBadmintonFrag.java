@@ -136,7 +136,7 @@ public class maleBadmintonFrag extends Fragment {
                 if(cursor[i]==0 ){
                     cursor[i]=1;
                     location.setVisibility(View.VISIBLE);
-                    court.setText("Court No." + ds.get("Court").toString());
+                    court.setText("Court No. " + ds.get("Court").toString());
                     day.setText("Day " + ds.get("Day").toString());
                     time.setText(ds.get("Time").toString());
                     if(ds.get("flag").toString().equals("0")){
