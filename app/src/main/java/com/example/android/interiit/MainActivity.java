@@ -26,12 +26,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.webkit.WebView;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -161,23 +165,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
            case R.id.nav_bus:
                setTitle("Bus");
-               androidx.fragment.app.FragmentTransaction ft5 = (androidx.fragment.app.FragmentTransaction)getSupportFragmentManager().beginTransaction();
+               //Toast.makeText(this,"Loading...",Toast.LENGTH_LONG);
+               androidx.fragment.app.FragmentTransaction ft5= (androidx.fragment.app.FragmentTransaction)getSupportFragmentManager().beginTransaction();
                FrameLayout fl5=findViewById(R.id.nav_host_fragment);
-               DownloadManager downloadmanager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-               Uri uri = Uri.parse("https://www.iitbbs.ac.in/transportation-fle/transport_1572912511.pdf");
-
-               DownloadManager.Request request = new DownloadManager.Request(uri);
-               request.setTitle("My File");
-               request.setDescription("Downloading");
-               request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-               request.setVisibleInDownloadsUi(false);
-               request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "Transportation.pdf");
-
-               downloadmanager.enqueue(request);
-
                fl5.removeAllViews();
-               ft5.replace(R.id.nav_host_fragment, new ScoreFragment());
+               ft5.replace(R.id.nav_host_fragment, new TransportFragment());
                ft5.commit();
+
                break;
 
            case R.id.nav_help:

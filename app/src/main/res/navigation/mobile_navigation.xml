@@ -26,12 +26,12 @@
         android:name="com.example.android.interiit.MapFragment"
         android:label="Campus Map"
         tools:layout="@layout/fragment_map" />
-
     <fragment
         android:id="@+id/nav_bus"
-        android:name="com.example.android.interiit.ScoreFragment"
-        android:label="Schedule"
-        tools:layout="@layout/fragment_score" />
+        android:name="com.example.android.interiit.TransportFragment"
+        android:label="Bus Schedule"
+        tools:layout="@layout/fragment_transport" />
+
 
     <fragment
         android:id="@+id/nav_help"
