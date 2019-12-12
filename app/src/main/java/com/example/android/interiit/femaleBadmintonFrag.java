@@ -42,7 +42,6 @@ public class femaleBadmintonFrag extends Fragment {
         logo = new logoMap();
         final Map logoM = logo.getMap();
 
-        //Female Volleyball Schedule
         lv=rootView.findViewById(R.id.Schedule);
         final FirebaseFirestore badF;
         badF = FirebaseFirestore.getInstance();

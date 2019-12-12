@@ -15,7 +15,7 @@ public class Badminton extends AppCompatActivity {
         setContentView(R.layout.activity_badminton);
 
         ViewPager viewPager = findViewById(R.id.BadmintonPager);
-        VolleyballFragAdapter adapter = new VolleyballFragAdapter(getSupportFragmentManager());
+        BadmintonFragAdapter adapter = new BadmintonFragAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
 
         TabLayout tabLayout=findViewById(R.id.Badminton_tabs);

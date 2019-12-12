@@ -73,7 +73,7 @@ public class maleTableTennisFrag extends Fragment {
                     .set(empMap);
         }*/
 
-        badF.collection("TT").document("male").collection("matches").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        badF.collection("TT").document("male").collection("matches").orderBy("MNo").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e)
             {
