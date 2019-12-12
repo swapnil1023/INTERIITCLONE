@@ -10,7 +10,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 
 
 public class HelpFragment extends Fragment {
@@ -19,7 +21,26 @@ public class HelpFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_help, container, false);
-        CardView badminton_help = rootView.findViewById(R.id.badminton_help);
+        final WebView webView=rootView.findViewById(R.id.webView);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.loadUrl("https://www.iitbbs.ac.in/inter-iit-sports-meet-2019/assets/images/Helpline.jpg");
+
+        webView.getSettings().setBuiltInZoomControls(true);
+        webView.setVisibility(View.INVISIBLE);
+        //webView.loadUrl("https://www.google.com");
+        final ProgressBar pgb=rootView.findViewById(R.id.progress);
+        pgb.setVisibility(View.VISIBLE);
+
+        webView.setWebViewClient(new WebViewClient() {
+
+            public void onPageFinished(WebView view, String url) {
+                // do your stuff here
+                pgb.setVisibility(View.GONE);
+                webView.setVisibility(View.VISIBLE);
+            }
+        });
+
+        /*CardView badminton_help = rootView.findViewById(R.id.badminton_help);
         CardView squash_help = rootView.findViewById(R.id.squash_help);
         CardView volleyball_help = rootView.findViewById(R.id.volleyball_help);
         CardView tt_help = rootView.findViewById(R.id.tt_help);
@@ -55,7 +76,7 @@ public class HelpFragment extends Fragment {
                 intent.setData(Uri.parse("tel:8233242012"));
                 startActivity(intent);
             }
-        });
+        });*/
 
         return rootView;
     }

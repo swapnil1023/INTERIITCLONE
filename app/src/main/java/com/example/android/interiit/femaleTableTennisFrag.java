@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -37,7 +38,7 @@ public class femaleTableTennisFrag extends Fragment {
     logoMap logo;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView= inflater.inflate(R.layout.activity_fragment_list, container, false);
+        final View rootView= inflater.inflate(R.layout.activity_fragment_list, container, false);
 
 
         logo = new logoMap();
@@ -114,12 +115,13 @@ public class femaleTableTennisFrag extends Fragment {
                 DocumentSnapshot ds = task.getResult();
 
 
-                LinearLayout scoreView1=view.findViewById(R.id.score_view_set1);
-                LinearLayout scoreView2=view.findViewById(R.id.score_view_set2);
-                LinearLayout scoreView3=view.findViewById(R.id.score_view_set3);
-                LinearLayout scoreView4=view.findViewById(R.id.score_view_set4);
-                LinearLayout scoreView5=view.findViewById(R.id.score_view_set5);
-                RelativeLayout location=view.findViewById(R.id.location);
+                final    LinearLayout scoreView1=view.findViewById(R.id.score_view_set1);
+                final LinearLayout scoreView2=view.findViewById(R.id.score_view_set2);
+                final LinearLayout scoreView3=view.findViewById(R.id.score_view_set3);
+                final LinearLayout scoreView4=view.findViewById(R.id.score_view_set4);
+                final   LinearLayout scoreView5=view.findViewById(R.id.score_view_set5);
+                final RelativeLayout location=view.findViewById(R.id.location);
+
                 TextView set1score1=view.findViewById(R.id.score1set1);
                 TextView set1score2=view.findViewById(R.id.score2set1);
                 TextView set2score1=view.findViewById(R.id.score1set2);
@@ -130,10 +132,46 @@ public class femaleTableTennisFrag extends Fragment {
                 TextView set4score2=view.findViewById(R.id.score2set4);
                 TextView set5score1=view.findViewById(R.id.score1set5);
                 TextView set5score2=view.findViewById(R.id.score2set5);
+
                 TextView court=view.findViewById(R.id.court);
                 TextView day=view.findViewById(R.id.day);
                 TextView time=view.findViewById(R.id.time);
-                TextView status=view.findViewById(R.id.match_status);
+
+                final TextView status=view.findViewById(R.id.match_status);
+
+                ListView lsv=rootView.findViewById(R.id.Schedule);
+                lsv.setOnScrollListener(new AbsListView.OnScrollListener() {
+                    private int mLastFirstVisibleItem;
+
+                    @Override
+                    public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+                        location.setVisibility(View.GONE);
+                        status.setVisibility(View.GONE);
+                        scoreView1.setVisibility(View.GONE);
+                        scoreView2.setVisibility(View.GONE);
+                        scoreView3.setVisibility(View.GONE);
+                        scoreView4.setVisibility(View.GONE);
+                        scoreView5.setVisibility(View.GONE);
+
+
+                    }
+
+                    @Override
+                    public void onScroll(AbsListView view, int firstVisibleItem,
+                                         int visibleItemCount, int totalItemCount) {
+
+                       /* location.setVisibility(View.GONE);
+                        status.setVisibility(View.GONE);
+                        scoreView1.setVisibility(View.GONE);
+                        scoreView2.setVisibility(View.GONE);
+                        scoreView3.setVisibility(View.GONE);
+                        scoreView4.setVisibility(View.GONE);
+                        scoreView5.setVisibility(View.GONE);*/
+
+                    }
+                });
+
                 if(cursor[i]==0 ){
                     cursor[i]=1;
                     location.setVisibility(View.VISIBLE);

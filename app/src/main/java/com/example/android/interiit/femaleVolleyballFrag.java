@@ -33,7 +33,9 @@ public class femaleVolleyballFrag extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-       final View rootView= inflater.inflate(R.layout.activity_fragment_list, container, false);
+
+        final View rootView= inflater.inflate(R.layout.activity_fragment_list, container, false);
+
 
         logo = new logoMap();
         final Map logoM = logo.getMap();
@@ -106,13 +108,15 @@ public class femaleVolleyballFrag extends Fragment {
                 task = badF.collection("VollyBall").document("female").collection("matches").document(String.valueOf(i+1)).get();
                 while(!task.isComplete());
 
+
                 DocumentSnapshot ds = task.getResult();
-                final    LinearLayout scoreView1=view.findViewById(R.id.score_view_set1);
+                final    LinearLayout scoreView1=view.findViewById(R.id.score_view_set1
                 final LinearLayout scoreView2=view.findViewById(R.id.score_view_set2);
                 final LinearLayout scoreView3=view.findViewById(R.id.score_view_set3);
                 final LinearLayout scoreView4=view.findViewById(R.id.score_view_set4);
                 final   LinearLayout scoreView5=view.findViewById(R.id.score_view_set5);
                 final RelativeLayout location=view.findViewById(R.id.location);
+
                 TextView set1score1=view.findViewById(R.id.score1set1);
                 TextView set1score2=view.findViewById(R.id.score2set1);
                 TextView set2score1=view.findViewById(R.id.score1set2);
@@ -123,9 +127,11 @@ public class femaleVolleyballFrag extends Fragment {
                 TextView set4score2=view.findViewById(R.id.score2set4);
                 TextView set5score1=view.findViewById(R.id.score1set5);
                 TextView set5score2=view.findViewById(R.id.score2set5);
+
                 TextView court=view.findViewById(R.id.court);
                 TextView day=view.findViewById(R.id.day);
                 TextView time=view.findViewById(R.id.time);
+
                 final TextView status=view.findViewById(R.id.match_status);
 
                 ListView lsv=rootView.findViewById(R.id.Schedule);
@@ -160,6 +166,7 @@ public class femaleVolleyballFrag extends Fragment {
 
                     }
                 });
+
                 if(cursor[i]==0 ){
                     cursor[i]=1;
                     location.setVisibility(View.VISIBLE);

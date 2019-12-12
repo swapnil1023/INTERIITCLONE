@@ -137,12 +137,12 @@ public class maleVolleyballFrag extends Fragment {
 
 
 
-             final    LinearLayout scoreView1=view.findViewById(R.id.score_view_set1);
-               final LinearLayout scoreView2=view.findViewById(R.id.score_view_set2);
-               final LinearLayout scoreView3=view.findViewById(R.id.score_view_set3);
+                final    LinearLayout scoreView1=view.findViewById(R.id.score_view_set1);
+                final LinearLayout scoreView2=view.findViewById(R.id.score_view_set2);
+                final LinearLayout scoreView3=view.findViewById(R.id.score_view_set3);
                 final LinearLayout scoreView4=view.findViewById(R.id.score_view_set4);
-              final   LinearLayout scoreView5=view.findViewById(R.id.score_view_set5);
-               final RelativeLayout location=view.findViewById(R.id.location);
+                final   LinearLayout scoreView5=view.findViewById(R.id.score_view_set5);
+                final RelativeLayout location=view.findViewById(R.id.location);
 
                 TextView set1score1=view.findViewById(R.id.score1set1);
                 TextView set1score2=view.findViewById(R.id.score2set1);
