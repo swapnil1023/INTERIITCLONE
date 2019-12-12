@@ -58,7 +58,7 @@ public class femaleVolleyballFrag extends Fragment {
         list.add(new CardClass(R.drawable.madras ,"IIT Madras",R.drawable.indore,"IIT Indore" ));
         list.add(new CardClass(R.drawable.madras ,"IIT Madras",R.drawable.indore,"IIT Indore" ));*/
 
-        Map empMap= new HashMap<>();
+     /*   Map empMap= new HashMap<>();
         empMap.put("flag","0");
         empMap.put("team1","madras");
         empMap.put("team2","madras");
@@ -72,7 +72,7 @@ public class femaleVolleyballFrag extends Fragment {
         empMap.put("Time","");
         empMap.put("Court","");
 
-        DocumentReference ref = badF.collection("VollyBall").document("female");
+       // DocumentReference ref = badF.collection("VollyBall").document("female");
 
         for(int i=1 ; i<=32; i++)
         {
@@ -81,7 +81,7 @@ public class femaleVolleyballFrag extends Fragment {
                     .document(String.valueOf(i))
                     .set(empMap);
         }
-
+*/
         badF.collection("VollyBall").document("female").collection("matches").orderBy("MNo").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e)
