@@ -18,6 +18,7 @@
             android:label="Volleyball"/>
 
         <activity android:name=".MainActivity"
+            android:label="Inter IIT Sport's Meet"
             android:hardwareAccelerated="true"
             android:theme="@style/AppTheme.NoActionBar"
             >
