@@ -102,25 +102,27 @@
                     android:textColor="#000000"/>
             </LinearLayout>
 
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:layout_marginBottom="40dp"
+                android:gravity="center"
+
                 android:orientation="vertical"
-                android:id="@+id/map">
+                android:id="@+id/score">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/map" />
+                    android:src="@drawable/score" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="Campus Map"
+                    android:text="Scorecard"
                     android:textColor="#000000"/>
             </LinearLayout>
 
@@ -145,12 +147,37 @@
                     android:textColor="#000000" />
             </LinearLayout>
 
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
+               android:layout_marginLeft="20"
                 android:orientation="vertical"
                 android:id="@+id/help">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/coord" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Sport Coordinators"
+                    android:textColor="#000000"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+
+                android:orientation="vertical"
+                android:id="@+id/helpdesk">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -165,9 +192,46 @@
                     android:text="HelpDesk"
                     android:textColor="#000000"/>
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_marginBottom="40dp"
+                android:orientation="vertical"
+                android:id="@+id/map">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/map" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Campus Map"
+                    android:textColor="#000000"/>
+            </LinearLayout>
 
 
         </GridLayout>
+
+        <LinearLayout
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Developed By-\n  NEUROMANCERS IIT BHUBANESWAR"
+                android:textColor="#150518"
+                android:textColorHint="#00220606"
+                android:textStyle="bold"></TextView>
+
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>
