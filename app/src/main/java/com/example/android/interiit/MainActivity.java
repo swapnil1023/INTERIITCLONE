@@ -7,13 +7,13 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
@@ -52,6 +52,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onClick(View view) {
                 setTitle("Scores");
                 androidx.fragment.app.FragmentTransaction ft2 = (androidx.fragment.app.FragmentTransaction)getSupportFragmentManager().beginTransaction();
+                FragmentManager fm=getSupportFragmentManager();
+                fm.popBackStack();
                 FrameLayout fl=findViewById(R.id.nav_host_fragment);
                 fl.removeAllViews();
                 ft2.replace(R.id.nav_host_fragment, new ScoreFragment());
@@ -129,9 +131,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
      @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         int id=menuItem.getItemId();
-       switch (id) {
+        FragmentManager fm=getSupportFragmentManager();
+        fm.popBackStack();
+        switch (id) {
            case R.id.nav_home:
                setTitle("Home");
+
                androidx.fragment.app.FragmentTransaction ft1 = (androidx.fragment.app.FragmentTransaction)getSupportFragmentManager().beginTransaction();
                FrameLayout fl1=findViewById(R.id.nav_host_fragment);
                fl1.removeAllViews();
