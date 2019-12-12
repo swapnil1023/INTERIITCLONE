@@ -49,7 +49,7 @@ public class femaleTableTennisFrag extends Fragment {
         badF = FirebaseFirestore.getInstance();
         final ArrayList<CardClass> list=new ArrayList<>() ;
 
-        /*Map empMap= new HashMap<>();
+       /* Map empMap= new HashMap<>();
         empMap.put("flag","0");
         empMap.put("team1","madras");
         empMap.put("team2","madras");
