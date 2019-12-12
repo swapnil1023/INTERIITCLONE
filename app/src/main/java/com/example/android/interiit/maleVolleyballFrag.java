@@ -49,7 +49,7 @@ public class maleVolleyballFrag extends Fragment {
         badF = FirebaseFirestore.getInstance();
         final ArrayList<CardClass> list=new ArrayList<>() ;
 
-      /*  Map empMap= new HashMap<>();
+       /* Map empMap= new HashMap<>();
         empMap.put("flag","0");
         empMap.put("team1","madras");
         empMap.put("team2","madras");
@@ -61,9 +61,9 @@ public class maleVolleyballFrag extends Fragment {
         empMap.put("s3score2","");
         empMap.put("Day","");
         empMap.put("Time","");
-        empMap.put("Court","");
+        empMap.put("Court","");*/
 
-        DocumentReference ref = badF.collection("VollyBall").document("male");
+      /*  DocumentReference ref = badF.collection("VollyBall").document("male");
 
         for(int i=1 ; i<=32; i++)
         {
@@ -73,6 +73,27 @@ public class maleVolleyballFrag extends Fragment {
                     .set(empMap);
         }
 */
+        /*DocumentReference ref = badF.collection("Badminton").document("male");
+
+        for(int i=1 ; i<=48; i++)
+        {
+            empMap.put("MNo",i);
+            ref.collection("matches")
+                    .document(String.valueOf(i))
+                    .set(empMap);
+        }
+
+        DocumentReference ref1 = badF.collection("Badminton").document("female");
+
+        for(int i=1 ; i<=44; i++)
+        {
+            empMap.put("MNo",i);
+            ref1.collection("matches")
+                    .document(String.valueOf(i))
+                    .set(empMap);
+        }*/
+
+
         badF.collection("VollyBall").document("male").collection("matches").orderBy("MNo").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e)
