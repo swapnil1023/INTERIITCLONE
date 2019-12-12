@@ -122,14 +122,24 @@ public class femaleSquashFrag extends Fragment {
                 TextView set2score2=view.findViewById(R.id.score2set2);
                 TextView set3score1=view.findViewById(R.id.score1set3);
                 TextView set3score2=view.findViewById(R.id.score2set3);
+                TextView set4score1=view.findViewById(R.id.score1set4);
+                TextView set4score2=view.findViewById(R.id.score2set4);
+                TextView set5score1=view.findViewById(R.id.score1set5);
+                TextView set5score2=view.findViewById(R.id.score2set5);
                 TextView court=view.findViewById(R.id.court);
                 TextView day=view.findViewById(R.id.day);
                 TextView time=view.findViewById(R.id.time);
                 TextView status=view.findViewById(R.id.match_status);
                 if(cursor[i]==0 ){
                     cursor[i]=1;
-                    if(ds.get("flag").toString().equals("0"))
+                    location.setVisibility(View.VISIBLE);
+                    court.setText("Court No." + ds.get("Court").toString());
+                    day.setText("Day " + ds.get("Day").toString());
+                    time.setText(ds.get("Time").toString());
+                    if(ds.get("flag").toString().equals("0")){
                         status.setVisibility(View.VISIBLE);
+
+                    }
                     else {
                         status.setVisibility(View.GONE);
                         scoreView1.setVisibility(View.VISIBLE);
@@ -138,19 +148,28 @@ public class femaleSquashFrag extends Fragment {
                             scoreView2.setVisibility(View.VISIBLE);
                         if(!ds.get("s3score1").toString().equals(""))
                             scoreView3.setVisibility(View.VISIBLE);
+                        if(!ds.get("s4score1").toString().equals(""))
+                            scoreView3.setVisibility(View.VISIBLE);
+                        if(!ds.get("s5score1").toString().equals(""))
+                            scoreView3.setVisibility(View.VISIBLE);
                         set1score1.setText(ds.get("s1score1").toString());
                         set1score2.setText(ds.get("s1score2").toString());
                         set2score1.setText(ds.get("s2score1").toString());
                         set2score2.setText(ds.get("s2score2").toString());
                         set3score1.setText(ds.get("s3score1").toString());
-                        set3score2.setText(ds.get("s3score1").toString());
-                        court.setText("Court No." + ds.get("Court").toString());
-                        day.setText("Day " + ds.get("Day").toString());
-                        time.setText(ds.get("Time").toString());
+                        set3score2.setText(ds.get("s3score2").toString());
+                        set4score1.setText(ds.get("s4score1").toString());
+                        set4score2.setText(ds.get("s4score2").toString());
+                        set5score1.setText(ds.get("s5score1").toString());
+                        set5score2.setText(ds.get("s5score2").toString());
                     }
                 }
                 else{
                     cursor[i]=0;
+                    location.setVisibility(View.GONE);
+                    status.setVisibility(View.GONE);
+                    scoreView1.setVisibility(View.GONE);
+
                 }
             }
         });

@@ -23,7 +23,7 @@
         <activity
             android:name=".MainActivity"
             android:hardwareAccelerated="true"
-            android:label="Inter IIT Sport&apos;s Meet"
+            android:label="InterIIT "
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
