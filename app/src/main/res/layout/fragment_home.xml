@@ -175,7 +175,6 @@
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
                 android:gravity="center"
-
                 android:orientation="vertical"
                 android:id="@+id/helpdesk">
 

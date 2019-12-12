@@ -183,6 +183,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                ft6.commit();
                break;
 
+            case R.id.nav_helpDesk:
+                androidx.fragment.app.FragmentTransaction ft7= (androidx.fragment.app.FragmentTransaction)getSupportFragmentManager().beginTransaction();
+                FrameLayout fl7=findViewById(R.id.nav_host_fragment);
+                fl7.removeAllViews();
+                ft7.replace(R.id.nav_host_fragment, new HelpdeskFragment());
+                ft7.commit();
+                break;
        }
 
        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

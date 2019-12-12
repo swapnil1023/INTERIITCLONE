@@ -36,9 +36,14 @@
         app:itemTextColor="#FFFFFF">
         <menu>
             <item
-                android:id="@+id/nav_help"
+                android:id="@+id/nav_helpDesk"
                 android:icon="@drawable/help"
                 android:title="HelpDesk" />
+
+            <item
+                android:id="@+id/nav_help"
+                android:icon="@drawable/coord"
+                android:title="Co-ordinators" />
 
         </menu>
     </item>

@@ -35,8 +35,12 @@
     <fragment
         android:id="@+id/nav_help"
         android:name="com.example.android.interiit.HelpFragment"
-        android:label="HelpDesk"
+        android:label="Co-ordinators"
         tools:layout="@layout/fragment_help" />
 
-
+    <fragment
+        android:id="@+id/nav_helpDesk"
+        android:name="com.example.android.interiit.HelpdeskFragment"
+        android:label="HelpDesk"
+        tools:layout="@layout/fragment_help" />
 </navigation>
