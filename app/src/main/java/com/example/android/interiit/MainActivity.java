@@ -185,7 +185,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                androidx.fragment.app.FragmentTransaction ft6= (androidx.fragment.app.FragmentTransaction)getSupportFragmentManager().beginTransaction();
                FrameLayout fl6=findViewById(R.id.nav_host_fragment);
                fl6.removeAllViews();
-               ft6.replace(R.id.nav_host_fragment, new ScoreFragment());
+               ft6.replace(R.id.nav_host_fragment, new HelpFragment());
                ft6.commit();
                break;
 
