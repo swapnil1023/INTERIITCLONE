@@ -110,7 +110,7 @@ public class femaleVolleyballFrag extends Fragment {
 
 
                 DocumentSnapshot ds = task.getResult();
-                final    LinearLayout scoreView1=view.findViewById(R.id.score_view_set1
+                final    LinearLayout scoreView1=view.findViewById(R.id.score_view_set1);
                 final LinearLayout scoreView2=view.findViewById(R.id.score_view_set2);
                 final LinearLayout scoreView3=view.findViewById(R.id.score_view_set3);
                 final LinearLayout scoreView4=view.findViewById(R.id.score_view_set4);
