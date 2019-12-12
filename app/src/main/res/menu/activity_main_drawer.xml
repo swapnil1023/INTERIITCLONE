@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:showIn="navigation_view"
+    app:itemTextColor="#FFFFFF"
+
+    >
+
+    <group android:checkableBehavior="single">
+
+
+        <item
+            android:id="@+id/nav_home"
+
+
+            android:icon="@drawable/home"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_score"
+            android:icon="@drawable/score"
+
+
+            android:title="Scores" />
+        <item
+            android:id="@+id/nav_schedule"
+            android:icon="@drawable/schedule"
+
+            android:title="Schedule" />
+        <item
+            android:id="@+id/nav_bus"
+            android:icon="@drawable/bus"
+            android:title="Transpostation Schedule" />
+    </group>
+
+    <item android:title="Communicate"
+        app:itemTextColor="#FFFFFF">
+        <menu>
+            <item
+                android:id="@+id/nav_help"
+                android:icon="@drawable/help"
+                android:title="HelpDesk" />
+
+        </menu>
+    </item>
+
+</menu>

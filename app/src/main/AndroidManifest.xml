@@ -13,7 +13,9 @@
         <activity android:name=".Squash" />
         <activity android:name=".Badminton" />
         <activity android:name=".Volleyball" />
-        <activity android:name=".MainActivity">
+
+        <activity android:name=".MainActivity"
+            android:hardwareAccelerated="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
