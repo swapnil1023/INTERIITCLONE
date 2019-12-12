@@ -46,22 +46,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         //setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setTitle("Scores");
-                androidx.fragment.app.FragmentTransaction ft2 = (androidx.fragment.app.FragmentTransaction)getSupportFragmentManager().beginTransaction();
-                FragmentManager fm=getSupportFragmentManager();
-                fm.popBackStack();
-                FrameLayout fl=findViewById(R.id.nav_host_fragment);
-                fl.removeAllViews();
-                ft2.replace(R.id.nav_host_fragment, new ScoreFragment());
-                ft2.commit();
-               /* Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();*/
-            }
-        });
+
 
 
 
