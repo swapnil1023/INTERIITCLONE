@@ -48,7 +48,7 @@ public class maleBadmintonFrag extends Fragment {
         badF = FirebaseFirestore.getInstance();
         final ArrayList<CardClass> list=new ArrayList<>() ;
 
-        Map empMap= new HashMap<>();
+        /*Map empMap= new HashMap<>();
         empMap.put("flag","0");
         empMap.put("team1","madras");
         empMap.put("team2","madras");
@@ -71,7 +71,7 @@ public class maleBadmintonFrag extends Fragment {
                     .document(String.valueOf(i))
                     .set(empMap);
         }
-
+*/
         badF.collection("Badminton").document("male").collection("matches").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e)
