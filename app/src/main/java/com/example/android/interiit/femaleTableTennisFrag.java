@@ -11,10 +11,13 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -26,8 +29,6 @@ import java.util.Map;
 
 import javax.annotation.Nullable;
 
-import static com.example.android.interiit.femaleVolleyballFrag.collapse;
-import static com.example.android.interiit.femaleVolleyballFrag.expand;
 
 public class femaleTableTennisFrag extends Fragment {
 
@@ -48,11 +49,16 @@ public class femaleTableTennisFrag extends Fragment {
         badF = FirebaseFirestore.getInstance();
         final ArrayList<CardClass> list=new ArrayList<>() ;
 
-        Map empMap= new HashMap<>();
+        /*Map empMap= new HashMap<>();
+        empMap.put("flag","0");
         empMap.put("team1","madras");
         empMap.put("team2","madras");
-        empMap.put("score1","");
-        empMap.put("score2","");
+        empMap.put("s1score1","");
+        empMap.put("s1score2","");
+        empMap.put("s2score1","");
+        empMap.put("s2score2","");
+        empMap.put("s3score1","");
+        empMap.put("s3score2","");
         empMap.put("Day","");
         empMap.put("Time","");
         empMap.put("Court","");
@@ -65,7 +71,7 @@ public class femaleTableTennisFrag extends Fragment {
             ref.collection("matches")
                     .document(String.valueOf(i))
                     .set(empMap);
-        }
+        }*/
 
         badF.collection("TT").document("female").collection("matches").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -90,67 +96,64 @@ public class femaleTableTennisFrag extends Fragment {
             }
         });
 
-        final int [] cursor=new int[20];
+        final int [] cursor=new int[32];
         /*listArrayAdapter adapter=new listArrayAdapter(getActivity(),0,list);
         lv.setAdapter(adapter);*/
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                LinearLayout scoreView=view.findViewById(R.id.score_view_set1);
-                TextView score1=view.findViewById(R.id.score1set1);
-                TextView score2=view.findViewById(R.id.score2set1);
+
+                Task<DocumentSnapshot> task;
+                task = badF.collection("TT").document("female").collection("matches").document(String.valueOf(i+1)).get();
+                while(!task.isComplete());
+
+                DocumentSnapshot ds = task.getResult();
+
+
+                LinearLayout scoreView1=view.findViewById(R.id.score_view_set1);
+                LinearLayout scoreView2=view.findViewById(R.id.score_view_set2);
+                LinearLayout scoreView3=view.findViewById(R.id.score_view_set3);
+                RelativeLayout location=view.findViewById(R.id.location);
+                TextView set1score1=view.findViewById(R.id.score1set1);
+                TextView set1score2=view.findViewById(R.id.score2set1);
+                TextView set2score1=view.findViewById(R.id.score1set2);
+                TextView set2score2=view.findViewById(R.id.score2set2);
+                TextView set3score1=view.findViewById(R.id.score1set3);
+                TextView set3score2=view.findViewById(R.id.score2set3);
+                TextView court=view.findViewById(R.id.court);
+                TextView day=view.findViewById(R.id.day);
+                TextView time=view.findViewById(R.id.time);
+                TextView status=view.findViewById(R.id.match_status);
                 if(cursor[i]==0 ){
                     cursor[i]=1;
-                    expand(view,250,0);
-                    scoreView.setVisibility(View.VISIBLE);
-                    score1.setText("0");
-                    score2.setText("0");
+                    if(ds.get("flag").toString().equals("0"))
+                        status.setVisibility(View.VISIBLE);
+                    else {
+                        status.setVisibility(View.GONE);
+                        scoreView1.setVisibility(View.VISIBLE);
+                        location.setVisibility(View.VISIBLE);
+                        if(!ds.get("s2score1").toString().equals(""))
+                            scoreView2.setVisibility(View.VISIBLE);
+                        if(!ds.get("s3score1").toString().equals(""))
+                            scoreView3.setVisibility(View.VISIBLE);
+                        set1score1.setText(ds.get("s1score1").toString());
+                        set1score2.setText(ds.get("s1score2").toString());
+                        set2score1.setText(ds.get("s2score1").toString());
+                        set2score2.setText(ds.get("s2score2").toString());
+                        set3score1.setText(ds.get("s3score1").toString());
+                        set3score2.setText(ds.get("s3score1").toString());
+                        court.setText("Court No." + ds.get("Court").toString());
+                        day.setText("Day " + ds.get("Day").toString());
+                        time.setText(ds.get("Time").toString());
+                    }
                 }
                 else{
                     cursor[i]=0;
-                    collapse(view,250,0);
                 }
             }
         });
         return rootView;
 
-    }
-
-    public static void expand(final View v, int duration, int targetHeight) {
-
-        int prevHeight  = v.getHeight();
-        targetHeight=3*prevHeight;
-        v.setVisibility(View.VISIBLE);
-        ValueAnimator valueAnimator = ValueAnimator.ofInt(prevHeight, targetHeight);
-        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                v.getLayoutParams().height = (int) animation.getAnimatedValue();
-                v.requestLayout();
-            }
-        });
-        valueAnimator.setInterpolator(new DecelerateInterpolator());
-        valueAnimator.setDuration(duration);
-        valueAnimator.start();
-    }
-
-
-
-    public static void collapse(final View v, int duration, int targetHeight) {
-        int prevHeight  = v.getHeight();
-        targetHeight=prevHeight/3;
-        ValueAnimator valueAnimator = ValueAnimator.ofInt(prevHeight, targetHeight);
-        valueAnimator.setInterpolator(new DecelerateInterpolator());
-        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                v.getLayoutParams().height = (int) animation.getAnimatedValue();
-                v.requestLayout();
-            }
-        });
-        valueAnimator.setInterpolator(new DecelerateInterpolator());
-        valueAnimator.setDuration(duration);
-        valueAnimator.start();
     }
 
 }

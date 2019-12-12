@@ -1,34 +1,28 @@
 package com.example.android.interiit;
 
 import androidx.fragment.app.Fragment;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentChange;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
-
 import javax.annotation.Nullable;
 
 public class femaleVolleyballFrag extends Fragment {
+
 
     ListView lv;
     listArrayAdapter adapter;
@@ -46,42 +40,7 @@ public class femaleVolleyballFrag extends Fragment {
         final FirebaseFirestore badF;
         badF = FirebaseFirestore.getInstance();
         final ArrayList<CardClass> list=new ArrayList<>() ;
-        /*list.add(new CardClass(R.drawable.madras ,"IIT Female VOLLEY",R.drawable.indore,"IIT Indore" ));
-        list.add(new CardClass(R.drawable.madras ,"IIT Masdja",R.drawable.indore,"IIT MAdr" ));
-        list.add(new CardClass(R.drawable.madras ,"IIT Mad",R.drawable.indore,"IIT M" ));
-        list.add(new CardClass(R.drawable.madras ,"IIT Madras",R.drawable.indore,"IIT Indore" ));
-        list.add(new CardClass(R.drawable.madras ,"IIT Madras",R.drawable.indore,"IIT Indore" ));
-        list.add(new CardClass(R.drawable.madras ,"IIT Madras",R.drawable.indore,"IIT Indore" ));
-        list.add(new CardClass(R.drawable.madras ,"IIT Madras",R.drawable.indore,"IIT Indore" ));
-        list.add(new CardClass(R.drawable.madras ,"IIT Madras",R.drawable.indore,"IIT Indore" ));
-        list.add(new CardClass(R.drawable.madras ,"IIT Madras",R.drawable.indore,"IIT Indore" ));
-        list.add(new CardClass(R.drawable.madras ,"IIT Madras",R.drawable.indore,"IIT Indore" ));
-        list.add(new CardClass(R.drawable.madras ,"IIT Madras",R.drawable.indore,"IIT Indore" ));*/
 
-     /*   Map empMap= new HashMap<>();
-        empMap.put("flag","0");
-        empMap.put("team1","madras");
-        empMap.put("team2","madras");
-        empMap.put("s1score1","");
-        empMap.put("s1score2","");
-        empMap.put("s2score1","");
-        empMap.put("s2score2","");
-        empMap.put("s3score1","");
-        empMap.put("s3score2","");
-        empMap.put("Day","");
-        empMap.put("Time","");
-        empMap.put("Court","");
-
-       // DocumentReference ref = badF.collection("VollyBall").document("female");
-
-        for(int i=1 ; i<=32; i++)
-        {
-            empMap.put("MNo",i);
-            ref.collection("matches")
-                    .document(String.valueOf(i))
-                    .set(empMap);
-        }
-*/
         badF.collection("VollyBall").document("female").collection("matches").orderBy("MNo").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e)
@@ -97,15 +56,14 @@ public class femaleVolleyballFrag extends Fragment {
                         list.add(new CardClass(Integer.parseInt(match.getDocument().getId()), uri1, match.getDocument().get("team1").toString(), uri2, match.getDocument().get("team2").toString()));
                     }
                 }
-
                 adapter=new listArrayAdapter(getActivity(),0,list);
                 lv.setAdapter(adapter);
-
-
             }
         });
 
-        final int [] cursor=new int[32];
+
+
+        final int [] cursor=new int[36];
         /*listArrayAdapter adapter=new listArrayAdapter(getActivity(),0,list);
         lv.setAdapter(adapter);*/
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -117,12 +75,16 @@ public class femaleVolleyballFrag extends Fragment {
                 while(!task.isComplete());
 
                 DocumentSnapshot ds = task.getResult();
-
-
-                LinearLayout scoreView=view.findViewById(R.id.score_view_set1);
+                LinearLayout scoreView1=view.findViewById(R.id.score_view_set1);
+                LinearLayout scoreView2=view.findViewById(R.id.score_view_set2);
+                LinearLayout scoreView3=view.findViewById(R.id.score_view_set3);
                 RelativeLayout location=view.findViewById(R.id.location);
-                TextView score1=view.findViewById(R.id.score1set1);
-                TextView score2=view.findViewById(R.id.score2set1);
+                TextView set1score1=view.findViewById(R.id.score1set1);
+                TextView set1score2=view.findViewById(R.id.score2set1);
+                TextView set2score1=view.findViewById(R.id.score1set2);
+                TextView set2score2=view.findViewById(R.id.score2set2);
+                TextView set3score1=view.findViewById(R.id.score1set3);
+                TextView set3score2=view.findViewById(R.id.score2set3);
                 TextView court=view.findViewById(R.id.court);
                 TextView day=view.findViewById(R.id.day);
                 TextView time=view.findViewById(R.id.time);
@@ -133,87 +95,32 @@ public class femaleVolleyballFrag extends Fragment {
                         status.setVisibility(View.VISIBLE);
                     else {
                         status.setVisibility(View.GONE);
-                        scoreView.setVisibility(View.VISIBLE);
+                        scoreView1.setVisibility(View.VISIBLE);
                         location.setVisibility(View.VISIBLE);
-                        score1.setText(ds.get("s1score1").toString());
-                        score2.setText(ds.get("s1score2").toString());
+                        if(!ds.get("s2score1").toString().equals(""))
+                            scoreView2.setVisibility(View.VISIBLE);
+                        if(!ds.get("s3score1").toString().equals(""))
+                            scoreView3.setVisibility(View.VISIBLE);
+                        set1score1.setText(ds.get("s1score1").toString());
+                        set1score2.setText(ds.get("s1score2").toString());
+                        set2score1.setText(ds.get("s2score1").toString());
+                        set2score2.setText(ds.get("s2score2").toString());
+                        set3score1.setText(ds.get("s3score1").toString());
+                        set3score2.setText(ds.get("s3score1").toString());
                         court.setText("Court No." + ds.get("Court").toString());
                         day.setText("Day " + ds.get("Day").toString());
                         time.setText(ds.get("Time").toString());
                     }
                 }
                 else{
-                    status.setVisibility(View.GONE);
                     cursor[i]=0;
+                    location.setVisibility(View.GONE);
+                    status.setVisibility(View.GONE);
+                    scoreView1.setVisibility(View.GONE);
+
                 }
             }
         });
         return rootView;
     }
-
-
-
-
-
-
-
-    public static void expand(final View v) {
-
-        int matchParentMeasureSpec = View.MeasureSpec.makeMeasureSpec(((View) v.getParent()).getWidth(), View.MeasureSpec.EXACTLY);
-        int wrapContentMeasureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
-        v.measure(matchParentMeasureSpec, wrapContentMeasureSpec);
-        final int targetHeight = v.getMeasuredHeight();
-
-        // Older versions of android (pre API 21) cancel animations for views with a height of 0.
-        v.getLayoutParams().height = 1;
-        v.setVisibility(View.VISIBLE);
-        Animation a = new Animation()
-        {
-            @Override
-            protected void applyTransformation(float interpolatedTime, android.view.animation.Transformation t) {
-                v.getLayoutParams().height = interpolatedTime == 1
-                        ? ViewGroup.LayoutParams.WRAP_CONTENT
-                        : (int)(targetHeight * interpolatedTime);
-                v.requestLayout();
-            }
-
-            @Override
-            public boolean willChangeBounds() {
-                return true;
-            }
-        };
-
-        // Expansion speed of 1dp/ms
-        a.setDuration((int)(targetHeight / v.getContext().getResources().getDisplayMetrics().density));
-        v.startAnimation(a);
-    }
-
-
-
-    public static void collapse(final View v) {
-        final int initialHeight = v.getMeasuredHeight();
-
-        Animation a = new Animation()
-        {
-            @Override
-            protected void applyTransformation(float interpolatedTime, Transformation t) {
-                if(interpolatedTime == 1){
-                    v.setVisibility(View.GONE);
-                }else{
-                    v.getLayoutParams().height = initialHeight - (int)(initialHeight * interpolatedTime);
-                    v.requestLayout();
-                }
-            }
-
-            @Override
-            public boolean willChangeBounds() {
-                return true;
-            }
-        };
-
-        // Collapse speed of 1dp/ms
-        a.setDuration((int)(initialHeight / v.getContext().getResources().getDisplayMetrics().density));
-        v.startAnimation(a);
-    }
-
 }
