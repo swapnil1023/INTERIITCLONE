@@ -49,7 +49,7 @@ public class maleVolleyballFrag extends Fragment {
         badF = FirebaseFirestore.getInstance();
         final ArrayList<CardClass> list=new ArrayList<>() ;
 
-       /* Map empMap= new HashMap<>();
+        /*Map empMap= new HashMap<>();
         empMap.put("flag","0");
         empMap.put("team1","madras");
         empMap.put("team2","madras");
@@ -59,20 +59,24 @@ public class maleVolleyballFrag extends Fragment {
         empMap.put("s2score2","");
         empMap.put("s3score1","");
         empMap.put("s3score2","");
+        empMap.put("s4score1","");
+        empMap.put("s4score2","");
+        empMap.put("s5score1","");
+        empMap.put("s5score2","");
         empMap.put("Day","");
         empMap.put("Time","");
-        empMap.put("Court","");*/
+        empMap.put("Court","");
 
-      /*  DocumentReference ref = badF.collection("VollyBall").document("male");
+        DocumentReference ref = badF.collection("VollyBall").document("male");
 
-        for(int i=1 ; i<=32; i++)
+        for(int i=1 ; i<=36; i++)
         {
             empMap.put("MNo",i);
             ref.collection("matches")
                     .document(String.valueOf(i))
                     .set(empMap);
-        }
-*/
+        }*/
+
         /*DocumentReference ref = badF.collection("Badminton").document("male");
 
         for(int i=1 ; i<=48; i++)

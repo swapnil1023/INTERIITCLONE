@@ -57,13 +57,17 @@ public class femaleSquashFrag extends Fragment {
         empMap.put("s2score2","");
         empMap.put("s3score1","");
         empMap.put("s3score2","");
+        empMap.put("s4score1","");
+        empMap.put("s4score2","");
+        empMap.put("s5score1","");
+        empMap.put("s5score2","");
         empMap.put("Day","");
         empMap.put("Time","");
         empMap.put("Court","");
 
         DocumentReference ref = badF.collection("Squash").document("female");
 
-        for(int i=1 ; i<=32; i++)
+        for(int i=1 ; i<=24; i++)
         {
             empMap.put("MNo",i);
             ref.collection("matches")

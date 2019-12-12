@@ -48,7 +48,7 @@ public class maleSquashFrag extends Fragment {
         badF = FirebaseFirestore.getInstance();
         final ArrayList<CardClass> list=new ArrayList<>() ;
 
-       /* Map empMap= new HashMap<>();
+        /*Map empMap= new HashMap<>();
         empMap.put("flag","0");
         empMap.put("team1","madras");
         empMap.put("team2","madras");
@@ -58,13 +58,17 @@ public class maleSquashFrag extends Fragment {
         empMap.put("s2score2","");
         empMap.put("s3score1","");
         empMap.put("s3score2","");
+        empMap.put("s4score1","");
+        empMap.put("s4score2","");
+        empMap.put("s5score1","");
+        empMap.put("s5score2","");
         empMap.put("Day","");
         empMap.put("Time","");
         empMap.put("Court","");
 
         DocumentReference ref = badF.collection("Squash").document("male");
 
-        for(int i=1 ; i<=32; i++)
+        for(int i=1 ; i<=18; i++)
         {
             empMap.put("MNo",i);
             ref.collection("matches")
