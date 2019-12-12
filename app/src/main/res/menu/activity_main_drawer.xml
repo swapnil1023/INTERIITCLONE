@@ -17,13 +17,15 @@
         <item
             android:id="@+id/nav_score"
             android:icon="@drawable/score"
-
             android:title="Scores" />
         <item
             android:id="@+id/nav_schedule"
             android:icon="@drawable/schedule"
-
             android:title="Schedule" />
+        <item
+            android:id="@+id/nav_map"
+            android:icon="@drawable/map"
+            android:title="Campus Map" />
         <item
             android:id="@+id/nav_bus"
             android:icon="@drawable/bus"

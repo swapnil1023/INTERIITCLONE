@@ -22,10 +22,17 @@
         tools:layout="@layout/fragment_score" />
 
     <fragment
+        android:id="@+id/nav_map"
+        android:name="com.example.android.interiit.MapFragment"
+        android:label="Campus Map"
+        tools:layout="@layout/fragment_map" />
+
+    <fragment
         android:id="@+id/nav_bus"
         android:name="com.example.android.interiit.ScoreFragment"
         android:label="Schedule"
         tools:layout="@layout/fragment_score" />
+
     <fragment
         android:id="@+id/nav_help"
         android:name="com.example.android.interiit.ScoreFragment"

@@ -8,20 +8,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TableTennis"
-            android:label="Table Tennis"/>
-        <activity android:name=".Squash"
-            android:label="Squash"/>
-        <activity android:name=".Badminton"
-            android:label="Badminton"/>
-        <activity android:name=".Volleyball"
-            android:label="Volleyball"/>
-
-        <activity android:name=".MainActivity"
-            android:label="Inter IIT Sport's Meet"
+        <activity
+            android:name=".TableTennis"
+            android:label="Table Tennis" />
+        <activity
+            android:name=".Squash"
+            android:label="Squash" />
+        <activity
+            android:name=".Badminton"
+            android:label="Badminton" />
+        <activity
+            android:name=".Volleyball"
+            android:label="Volleyball" />
+        <activity
+            android:name=".MainActivity"
             android:hardwareAccelerated="true"
-            android:theme="@style/AppTheme.NoActionBar"
-            >
+            android:label="Inter IIT Sport&apos;s Meet"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

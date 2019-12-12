@@ -13,10 +13,14 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.app.DownloadManager;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -144,21 +148,45 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                ft3.replace(R.id.nav_host_fragment, new ScoreFragment());
                ft3.commit();
                break;
-           case R.id.nav_bus:
-               setTitle("Bus");
+
+           case R.id.nav_map:
+               setTitle("Campus Map");
                androidx.fragment.app.FragmentTransaction ft4 = (androidx.fragment.app.FragmentTransaction)getSupportFragmentManager().beginTransaction();
                FrameLayout fl4=findViewById(R.id.nav_host_fragment);
                fl4.removeAllViews();
-               ft4.replace(R.id.nav_host_fragment, new ScoreFragment());
+               ft4.replace(R.id.nav_host_fragment, new MapFragment());
                ft4.commit();
                break;
-           case R.id.nav_help:
-               setTitle("Help");
-               androidx.fragment.app.FragmentTransaction ft5= (androidx.fragment.app.FragmentTransaction)getSupportFragmentManager().beginTransaction();
+
+
+           case R.id.nav_bus:
+               setTitle("Bus");
+               androidx.fragment.app.FragmentTransaction ft5 = (androidx.fragment.app.FragmentTransaction)getSupportFragmentManager().beginTransaction();
                FrameLayout fl5=findViewById(R.id.nav_host_fragment);
+               DownloadManager downloadmanager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+               Uri uri = Uri.parse("https://www.iitbbs.ac.in/transportation-fle/transport_1572912511.pdf");
+
+               DownloadManager.Request request = new DownloadManager.Request(uri);
+               request.setTitle("My File");
+               request.setDescription("Downloading");
+               request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+               request.setVisibleInDownloadsUi(false);
+               request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "Transportation.pdf");
+
+               downloadmanager.enqueue(request);
+
                fl5.removeAllViews();
                ft5.replace(R.id.nav_host_fragment, new ScoreFragment());
                ft5.commit();
+               break;
+
+           case R.id.nav_help:
+               setTitle("Help");
+               androidx.fragment.app.FragmentTransaction ft6= (androidx.fragment.app.FragmentTransaction)getSupportFragmentManager().beginTransaction();
+               FrameLayout fl6=findViewById(R.id.nav_host_fragment);
+               fl6.removeAllViews();
+               ft6.replace(R.id.nav_host_fragment, new ScoreFragment());
+               ft6.commit();
                break;
 
        }
