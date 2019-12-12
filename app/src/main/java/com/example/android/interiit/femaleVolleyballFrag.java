@@ -93,8 +93,14 @@ public class femaleVolleyballFrag extends Fragment {
                 TextView status=view.findViewById(R.id.match_status);
                 if(cursor[i]==0 ){
                     cursor[i]=1;
-                    if(ds.get("flag").toString().equals("0"))
+                    location.setVisibility(View.VISIBLE);
+                    court.setText("Court No." + ds.get("Court").toString());
+                    day.setText("Day " + ds.get("Day").toString());
+                    time.setText(ds.get("Time").toString());
+                    if(ds.get("flag").toString().equals("0")){
                         status.setVisibility(View.VISIBLE);
+
+                    }
                     else {
                         status.setVisibility(View.GONE);
                         scoreView1.setVisibility(View.VISIBLE);
@@ -109,9 +115,6 @@ public class femaleVolleyballFrag extends Fragment {
                         set2score2.setText(ds.get("s2score2").toString());
                         set3score1.setText(ds.get("s3score1").toString());
                         set3score2.setText(ds.get("s3score1").toString());
-                        court.setText("Court No." + ds.get("Court").toString());
-                        day.setText("Day " + ds.get("Day").toString());
-                        time.setText(ds.get("Time").toString());
                     }
                 }
                 else{

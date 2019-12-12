@@ -126,8 +126,9 @@ public class femaleTableTennisFrag extends Fragment {
                 TextView status=view.findViewById(R.id.match_status);
                 if(cursor[i]==0 ){
                     cursor[i]=1;
-                    if(ds.get("flag").toString().equals("0"))
+                    if(ds.get("flag").toString().equals("0")){
                         status.setVisibility(View.VISIBLE);
+                        location.setVisibility(View.VISIBLE);}
                     else {
                         status.setVisibility(View.GONE);
                         scoreView1.setVisibility(View.VISIBLE);
