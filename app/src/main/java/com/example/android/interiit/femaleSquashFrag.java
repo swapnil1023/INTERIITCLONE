@@ -115,6 +115,8 @@ public class femaleSquashFrag extends Fragment {
                 LinearLayout scoreView1=view.findViewById(R.id.score_view_set1);
                 LinearLayout scoreView2=view.findViewById(R.id.score_view_set2);
                 LinearLayout scoreView3=view.findViewById(R.id.score_view_set3);
+                LinearLayout scoreView4=view.findViewById(R.id.score_view_set4);
+                LinearLayout scoreView5=view.findViewById(R.id.score_view_set5);
                 RelativeLayout location=view.findViewById(R.id.location);
                 TextView set1score1=view.findViewById(R.id.score1set1);
                 TextView set1score2=view.findViewById(R.id.score2set1);
@@ -149,9 +151,9 @@ public class femaleSquashFrag extends Fragment {
                         if(!ds.get("s3score1").toString().equals(""))
                             scoreView3.setVisibility(View.VISIBLE);
                         if(!ds.get("s4score1").toString().equals(""))
-                            scoreView3.setVisibility(View.VISIBLE);
+                            scoreView4.setVisibility(View.VISIBLE);
                         if(!ds.get("s5score1").toString().equals(""))
-                            scoreView3.setVisibility(View.VISIBLE);
+                            scoreView5.setVisibility(View.VISIBLE);
                         set1score1.setText(ds.get("s1score1").toString());
                         set1score2.setText(ds.get("s1score2").toString());
                         set2score1.setText(ds.get("s2score1").toString());
@@ -169,6 +171,10 @@ public class femaleSquashFrag extends Fragment {
                     location.setVisibility(View.GONE);
                     status.setVisibility(View.GONE);
                     scoreView1.setVisibility(View.GONE);
+                    scoreView2.setVisibility(View.GONE);
+                    scoreView3.setVisibility(View.GONE);
+                    scoreView4.setVisibility(View.GONE);
+                    scoreView5.setVisibility(View.GONE);
 
                 }
             }
