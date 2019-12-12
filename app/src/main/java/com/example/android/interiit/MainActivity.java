@@ -1,56 +1,183 @@
 package com.example.android.interiit;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.FrameLayout;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
+
+
+    private AppBarConfiguration mAppBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final CardView Volleyball=findViewById(R.id.Volleyball);
-        final CardView Badminton=findViewById(R.id.Badminton);
-        final CardView Squash=findViewById(R.id.Squash);
-        final CardView TableTennis=findViewById(R.id.TableTennis);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+      //  setSupportActionBar(toolbar);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //setSupportActionBar(toolbar);
 
-        Volleyball.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,Volleyball.class);
-                startActivity(intent);
-            }
-        });
-
-        Badminton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,Badminton.class);
-                startActivity(intent);
-            }
-        });
-        Squash.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,Squash.class);
-                startActivity(intent);
-            }
-        });
-        TableTennis.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,TableTennis.class);
-                startActivity(intent);
+                setTitle("Scores");
+                androidx.fragment.app.FragmentTransaction ft2 = (androidx.fragment.app.FragmentTransaction)getSupportFragmentManager().beginTransaction();
+                FrameLayout fl=findViewById(R.id.nav_host_fragment);
+                fl.removeAllViews();
+                ft2.replace(R.id.nav_host_fragment, new ScoreFragment());
+                ft2.commit();
+               /* Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();*/
             }
         });
 
+
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        //drawer.bringToFront();
+        //drawer.requestLayout();
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        //navigationView.set
+       navigationView.bringToFront();
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        mAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.nav_home, R.id.nav_score, R.id.nav_schedule,
+                R.id.nav_bus, R.id.nav_help)
+                .setDrawerLayout(drawer)
+                .build();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView, navController);
+       // displaySelectedScreen(R.id.nav_home);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
+                || super.onSupportNavigateUp();
+    }
+   // @SuppressWarnings("StatementWithEmptyBody")
+
+   @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+       int id = item.getItemId();
+
+       //noinspection SimplifiableIfStatement
+       if (id == R.id.action_settings) {
+           return true;
+       }
+        return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+    @SuppressWarnings("StatementWithEmptyBody")
+     @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        int id=menuItem.getItemId();
+       switch (id) {
+           case R.id.nav_home:
+               setTitle("Home");
+               androidx.fragment.app.FragmentTransaction ft1 = (androidx.fragment.app.FragmentTransaction)getSupportFragmentManager().beginTransaction();
+               FrameLayout fl1=findViewById(R.id.nav_host_fragment);
+               fl1.removeAllViews();
+               ft1.replace(R.id.nav_host_fragment, new HomeFragment());
+               ft1.commit();
+               break;
+           case R.id.nav_score:
+               setTitle("Scores");
+               androidx.fragment.app.FragmentTransaction ft2 = (androidx.fragment.app.FragmentTransaction)getSupportFragmentManager().beginTransaction();
+               FrameLayout fl2=findViewById(R.id.nav_host_fragment);
+               fl2.removeAllViews();
+               ft2.replace(R.id.nav_host_fragment, new ScoreFragment());
+               ft2.commit();
+               break;
+           case R.id.nav_schedule:
+               setTitle("Schedule");
+               androidx.fragment.app.FragmentTransaction ft3 = (androidx.fragment.app.FragmentTransaction)getSupportFragmentManager().beginTransaction();
+               FrameLayout fl3=findViewById(R.id.nav_host_fragment);
+               fl3.removeAllViews();
+               ft3.replace(R.id.nav_host_fragment, new ScoreFragment());
+               ft3.commit();
+               break;
+           case R.id.nav_bus:
+               setTitle("Bus");
+               androidx.fragment.app.FragmentTransaction ft4 = (androidx.fragment.app.FragmentTransaction)getSupportFragmentManager().beginTransaction();
+               FrameLayout fl4=findViewById(R.id.nav_host_fragment);
+               fl4.removeAllViews();
+               ft4.replace(R.id.nav_host_fragment, new ScoreFragment());
+               ft4.commit();
+               break;
+           case R.id.nav_help:
+               setTitle("Help");
+               androidx.fragment.app.FragmentTransaction ft5= (androidx.fragment.app.FragmentTransaction)getSupportFragmentManager().beginTransaction();
+               FrameLayout fl5=findViewById(R.id.nav_host_fragment);
+               fl5.removeAllViews();
+               ft5.replace(R.id.nav_host_fragment, new ScoreFragment());
+               ft5.commit();
+               break;
+
+       }
+
+       DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+       drawer.closeDrawer(GravityCompat.START);
+        return true;
 
     }
+
+
 }
