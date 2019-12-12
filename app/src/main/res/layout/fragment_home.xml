@@ -1,17 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeFragment"
+    android:orientation="vertical"
     android:background="#FFFFFF">
 
     <!-- TODO: Update blank fragment layout -->
+
+
     <ImageView
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="242dp"
+        android:src="@drawable/homeimg"></ImageView>
 
-        android:src="@drawable/iitbbslogo"></ImageView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:layout_margin="16dp"
+        android:fontFamily="@font/allerta_stencil"
+        android:text="54th Inter IIT Sports Meet"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#4B0904"
+        android:textColorLink="#FF5722"
+        android:textSize="20dp"
+        android:textStyle="bold">
 
-</FrameLayout>
+    </TextView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_margin="8dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="222dp"
+            android:src="@drawable/iitkgplogo"></ImageView>
+        <ImageView
+            android:layout_margin="8dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="252dp"
+            android:src="@drawable/iitbbslogo"></ImageView>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+
+        android:fontFamily="cursive"
+        android:foregroundGravity="fill_horizontal|center_horizontal"
+        android:gravity="clip_horizontal|center_horizontal"
+
+        android:text="Welcome to the annual face-off between the 23 IITs in the sports arena, with 13 sports spread over 9 days."
+        android:textColor="#4E0B07"
+        android:textSize="40dp"
+        android:textStyle="bold">
+
+    </TextView>
+
+
+</LinearLayout>
+    </ScrollView>
