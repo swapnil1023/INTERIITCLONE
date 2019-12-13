@@ -13,21 +13,29 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.app.DownloadManager;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.webkit.WebView;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,27 +49,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
-      //  setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         //setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setTitle("Scores");
-                androidx.fragment.app.FragmentTransaction ft2 = (androidx.fragment.app.FragmentTransaction)getSupportFragmentManager().beginTransaction();
-                FragmentManager fm=getSupportFragmentManager();
-                fm.popBackStack();
-                FrameLayout fl=findViewById(R.id.nav_host_fragment);
-                fl.removeAllViews();
-                ft2.replace(R.id.nav_host_fragment, new ScoreFragment());
-                ft2.commit();
-               /* Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();*/
-            }
-        });
+
 
 
 
@@ -159,23 +152,44 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                ft3.replace(R.id.nav_host_fragment, new ScoreFragment());
                ft3.commit();
                break;
-           case R.id.nav_bus:
-               setTitle("Bus");
+
+           case R.id.nav_map:
+               setTitle("Campus Map");
                androidx.fragment.app.FragmentTransaction ft4 = (androidx.fragment.app.FragmentTransaction)getSupportFragmentManager().beginTransaction();
                FrameLayout fl4=findViewById(R.id.nav_host_fragment);
                fl4.removeAllViews();
-               ft4.replace(R.id.nav_host_fragment, new ScoreFragment());
+               ft4.replace(R.id.nav_host_fragment, new MapFragment());
                ft4.commit();
                break;
-           case R.id.nav_help:
-               setTitle("Help");
+
+
+           case R.id.nav_bus:
+               setTitle("Bus");
+               //Toast.makeText(this,"Loading...",Toast.LENGTH_LONG);
                androidx.fragment.app.FragmentTransaction ft5= (androidx.fragment.app.FragmentTransaction)getSupportFragmentManager().beginTransaction();
                FrameLayout fl5=findViewById(R.id.nav_host_fragment);
                fl5.removeAllViews();
-               ft5.replace(R.id.nav_host_fragment, new ScoreFragment());
+               ft5.replace(R.id.nav_host_fragment, new TransportFragment());
                ft5.commit();
+
                break;
 
+           case R.id.nav_help:
+               setTitle("Help");
+               androidx.fragment.app.FragmentTransaction ft6= (androidx.fragment.app.FragmentTransaction)getSupportFragmentManager().beginTransaction();
+               FrameLayout fl6=findViewById(R.id.nav_host_fragment);
+               fl6.removeAllViews();
+               ft6.replace(R.id.nav_host_fragment, new HelpFragment());
+               ft6.commit();
+               break;
+
+            case R.id.nav_helpDesk:
+                androidx.fragment.app.FragmentTransaction ft7= (androidx.fragment.app.FragmentTransaction)getSupportFragmentManager().beginTransaction();
+                FrameLayout fl7=findViewById(R.id.nav_host_fragment);
+                fl7.removeAllViews();
+                ft7.replace(R.id.nav_host_fragment, new HelpdeskFragment());
+                ft7.commit();
+                break;
        }
 
        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

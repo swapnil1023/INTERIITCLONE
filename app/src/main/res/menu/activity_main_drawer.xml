@@ -12,34 +12,38 @@
 
         <item
             android:id="@+id/nav_home"
-
-
             android:icon="@drawable/home"
             android:title="@string/menu_home" />
         <item
             android:id="@+id/nav_score"
             android:icon="@drawable/score"
-
-
             android:title="Scores" />
         <item
             android:id="@+id/nav_schedule"
             android:icon="@drawable/schedule"
-
             android:title="Schedule" />
+        <item
+            android:id="@+id/nav_map"
+            android:icon="@drawable/map"
+            android:title="Campus Map" />
         <item
             android:id="@+id/nav_bus"
             android:icon="@drawable/bus"
-            android:title="Transpostation Schedule" />
+            android:title="Transportation Schedule" />
     </group>
 
     <item android:title="Communicate"
         app:itemTextColor="#FFFFFF">
         <menu>
             <item
-                android:id="@+id/nav_help"
+                android:id="@+id/nav_helpDesk"
                 android:icon="@drawable/help"
                 android:title="HelpDesk" />
+
+            <item
+                android:id="@+id/nav_help"
+                android:icon="@drawable/coord"
+                android:title="Sports Co-ordinators" />
 
         </menu>
     </item>

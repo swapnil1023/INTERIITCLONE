@@ -65,7 +65,7 @@
                     android:id="@+id/T1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="4dp"
+                    android:layout_marginLeft="8dp"
                     android:text="IIT Madras"
                     android:textColor="#000000"
                     android:textSize="24sp" />
@@ -90,7 +90,7 @@
                     android:id="@+id/T2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="8dp"
                     android:text="IIT Indore"
                     android:textColor="#000000"
                     android:textSize="24sp" />
@@ -163,7 +163,8 @@
                 android:textColor="#000000"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="0" />
+                tools:text="0"
+                android:layout_marginRight="16dp"/>
 
             <TextView
                 android:text="-"
@@ -180,7 +181,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="0"
-                android:textColor="#000000"/>
+                android:textColor="#000000"
+                android:layout_marginLeft="16dp"/>
 
         </LinearLayout>
         <LinearLayout
@@ -198,7 +200,8 @@
                 android:textColor="#000000"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="0" />
+                tools:text="0"
+                android:layout_marginRight="16dp"/>
 
             <TextView
                 android:text="-"
@@ -215,6 +218,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="0"
+                android:layout_marginLeft="16dp"
                 android:textColor="#000000"/>
 
         </LinearLayout>
@@ -233,7 +237,8 @@
                 android:textColor="#000000"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="0" />
+                tools:text="0"
+                android:layout_marginRight="16dp"/>
 
             <TextView
                 android:text="-"
@@ -250,6 +255,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="0"
+                android:layout_marginLeft="16dp"
                 android:textColor="#000000"/>
 
         </LinearLayout>
@@ -266,6 +272,7 @@
                 android:layout_gravity="center_horizontal"
                 android:textSize="24sp"
                 android:textColor="#000000"
+                android:layout_marginRight="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="0" />
@@ -282,6 +289,7 @@
                 android:id="@+id/score2set4"
                 android:layout_gravity="center_horizontal"
                 android:textSize="24sp"
+                android:layout_marginLeft="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="0"
@@ -301,6 +309,7 @@
                 android:layout_gravity="center_horizontal"
                 android:textSize="24sp"
                 android:textColor="#000000"
+                android:layout_marginRight="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="0" />
@@ -317,6 +326,7 @@
                 android:id="@+id/score2set5"
                 android:layout_gravity="center_horizontal"
                 android:textSize="24sp"
+                android:layout_marginLeft="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="0"

@@ -22,15 +22,25 @@
         tools:layout="@layout/fragment_score" />
 
     <fragment
+        android:id="@+id/nav_map"
+        android:name="com.example.android.interiit.MapFragment"
+        android:label="Campus Map"
+        tools:layout="@layout/fragment_map" />
+    <fragment
         android:id="@+id/nav_bus"
-        android:name="com.example.android.interiit.ScoreFragment"
-        android:label="Schedule"
-        tools:layout="@layout/fragment_score" />
+        android:name="com.example.android.interiit.TransportFragment"
+        android:label="Bus Schedule"
+        tools:layout="@layout/fragment_transport" />
+
+    <fragment
+        android:id="@+id/nav_helpDesk"
+        android:name="com.example.android.interiit.HelpFragment"
+        android:label="Sports Co-ordinators"
+        tools:layout="@layout/fragment_help" />
+
     <fragment
         android:id="@+id/nav_help"
-        android:name="com.example.android.interiit.ScoreFragment"
-        android:label="Schedule"
-        tools:layout="@layout/fragment_score" />
-
-
+        android:name="com.example.android.interiit.HelpdeskFragment"
+        android:label="HelpDesk"
+        tools:layout="@layout/fragment_help" />
 </navigation>

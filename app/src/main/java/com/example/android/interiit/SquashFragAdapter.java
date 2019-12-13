@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 public class SquashFragAdapter extends FragmentPagerAdapter {
-    private String tabTitles[] = new String[] { "Male", "Female"};
+    private String tabTitles[] = new String[] { "Men", "Women"};
     public SquashFragAdapter(FragmentManager fm){
         super(fm,FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
     }
