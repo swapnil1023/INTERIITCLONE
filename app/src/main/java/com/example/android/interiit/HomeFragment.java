@@ -20,6 +20,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView= inflater.inflate(R.layout.fragment_home, container, false);
+
         LinearLayout score=rootView.findViewById(R.id.score);
         LinearLayout helpDesk=rootView.findViewById(R.id.helpdesk);
         LinearLayout schedule=rootView.findViewById(R.id.schedule);
@@ -43,7 +44,7 @@ public class HomeFragment extends Fragment {
                 transaction.replace(R.id.nav_host_fragment, fragment).addToBackStack(null).commit();
             }
         });
-        helpDesk.setOnClickListener(new View.OnClickListener() {
+        help.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Fragment fragment = new HelpdeskFragment();
@@ -68,7 +69,7 @@ public class HomeFragment extends Fragment {
                 transaction.replace(R.id.nav_host_fragment, fragment).addToBackStack(null).commit();
             }
         });
-        help.setOnClickListener(new View.OnClickListener() {
+        helpDesk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Fragment fragment = new HelpFragment();

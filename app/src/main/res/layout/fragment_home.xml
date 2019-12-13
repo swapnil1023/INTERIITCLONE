@@ -67,7 +67,7 @@
 
             android:text="Welcome to the annual face-off between the 23 IITs in the sports arena, with 13 sports spread over 9 days."
             android:textColor="#4E0B07"
-            android:textSize="40dp"
+            android:textSize="35dp"
             android:textStyle="bold">
 
         </TextView>
@@ -76,7 +76,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:columnCount="3"
-            android:layout_marginTop="50dp">
+            android:layout_marginTop="70dp">
 
 
 
@@ -166,7 +166,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="Sport Coordinators"
+                    android:text="Sports Co-ordinators"
                     android:textColor="#000000"/>
             </LinearLayout>
 
@@ -217,16 +217,20 @@
         </GridLayout>
 
         <LinearLayout
-            android:layout_margin="20dp"
+            android:layout_marginTop="100dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
+            android:gravity="center_horizontal"
             android:orientation="vertical">
 
             <TextView
+                android:paddingLeft="15dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Developed By-\n  NEUROMANCERS IIT BHUBANESWAR"
-                android:textColor="#150518"
+                android:layout_height="match_parent"
+                android:textSize="15dp"
+                android:text="Developed By-\nNEUROMANCERS IIT BHUBANESWAR\nMob no-9161684098,8739990058\nEmail-secyprogsoc.sg@iitbbs.ac.in\nAddress-Student Gymkhana IIT Bhubaneswar\nJatni,Khordha,Odisha,752050 "
+                android:textColor="#000000"
                 android:textColorHint="#00220606"
                 android:textStyle="bold"></TextView>
 
